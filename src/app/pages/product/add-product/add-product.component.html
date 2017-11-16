@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Add Product</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputProductName">Product Name</label>
+                <input type="text" class="form-control" id="inputProductName" placeholder="Product Name"/>
+              </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputCategory">Category</label>
+              <select class="form-control" id="inputCategory">
+                <option>Charger</option>
+                <option>Charger</option>
+                <option>Charger</option>
+                <option>Chargerg</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputPrice">Price</label>
+              <input type="text" class="form-control" id="inputPrice" placeholder="Price">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputSpecialPrice">Special Price</label>
+              <input type="text" class="form-control" id="inputSpecialPrice" placeholder="Special Price">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputQuantity">Quantity</label>
+              <input type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputStock">Stock</label>
+              <select class="form-control" id="inputStock">
+                <option>In Stock</option>
+                <option>Out of Stock</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputProductPicture">Product Picture</label>
+              <input type="file" class="form-control" id="inputProductPicture">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <nb-card>
+                <nb-card-header>
+                  Short Description
+                </nb-card-header>
+                <nb-card-body id="shortDesc">
+                  <ckeditor [config]="{ extraPlugins: 'divarea', height: '320' }"></ckeditor>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <nb-card>
+                <nb-card-header>
+                  Long Description
+                </nb-card-header>
+                <nb-card-body id="longDesc">
+                  <ckeditor [config]="{ extraPlugins: 'divarea', height: '320' }"></ckeditor>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
