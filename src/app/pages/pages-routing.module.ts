@@ -11,10 +11,6 @@ const routes: Routes = [{
     path: 'dashboard',
     component: DashboardComponent,
   },
-  // {
-  //   path: 'profile',
-  //   loadChildren: './profile/profile.module#ProfileModule',
-  // },
   {
     path: 'product',
     loadChildren: './product/product.module#ProductModule',
