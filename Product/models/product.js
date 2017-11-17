@@ -7,6 +7,9 @@ var ProductSchema = new Schema({
     product_name: {
         type: String
     },
+    product_category: {
+        type: String
+    },
     product_id: {
         type: Number,
         unique : true

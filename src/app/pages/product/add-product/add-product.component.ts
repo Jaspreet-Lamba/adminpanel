@@ -17,6 +17,7 @@ ProductForm : FormGroup;
 
 		this.ProductForm = this.fb.group({
 			productName : ['', Validators.required],
+			productCategory : ['', Validators.required],
 			productPrice : [null, Validators.required],
 			productImage : ['', Validators.required],
 			productShortDesc : ['', Validators.required],
@@ -28,7 +29,7 @@ ProductForm : FormGroup;
 
 	}
 	addProduct(){
-		console.log(this.ProductForm);
+		console.log(this.ProductForm.value);
 		var result = this.rest.addProduct(this.ProductForm.value).subscribe(
 			res=>{
 				console.log(res);

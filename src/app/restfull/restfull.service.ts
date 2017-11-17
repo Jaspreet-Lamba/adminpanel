@@ -11,7 +11,9 @@ export class RestfullService {
 	
 	Urls = {
 		getAllProducts : this.BaseUrl + "getAllProducts",
-		addProduct : this.BaseUrl + "addProduct"
+		addProduct : this.BaseUrl + "addProduct",
+		addCategory : this.BaseUrl + "addCategory",
+		getAllCategory : this.BaseUrl + "getAllCategory"
 	}
 	
 	getAllProducts() :Observable<any>{
@@ -22,6 +24,15 @@ export class RestfullService {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 		return this.http.post(this.Urls.addProduct, obj, options).map(data=>data = data.json());
-
 	}
+	addCategory(obj) :Observable<any>{
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(this.Urls.addCategory, obj, options).map(data=>data = data.json());
+	}
+
+	getAllCategory() :Observable<any>{
+		return this.http.get(this.Urls.getAllCategory).map(data=>data = data.json());
+	}
+
 }

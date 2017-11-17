@@ -4,12 +4,13 @@ var auth = require('../auth.json');
 var Product = require("../models/product");
 
 exports.addProduct = function(req,res){
-    productId = 27;
+    productId = 1;
     
      var product = new Product({ // Making Object of Users schema 
 	    product_id : productId,
 	    product_name : req.body.productName,
-	    product_price : req.body.productPrice,
+	    product_category : req.body.productCategory,
+        product_price : req.body.productPrice,
 	    product_image : req.body.productImage,
 	    product_splprice : req.body.productSplPrice,
 	    stock : req.body.stock,

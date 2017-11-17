@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.use(jwt({ secret: auth.secret}).unless({path: ['/api/v1/checkuser', '/api/v1/addProduct', '/api/v1/getAllProducts']}))
+app.use(jwt({ secret: auth.secret}).unless({path: ['/api/v1/checkuser', '/api/v1/addProduct', '/api/v1/getAllProducts', '/api/v1/addCategory', '/api/v1/getAllCategory']}))
 app.use('/api', routes);
 
 

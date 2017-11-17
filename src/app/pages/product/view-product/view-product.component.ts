@@ -38,6 +38,10 @@ export class ViewProductComponent {
         title: 'Name',
         type: 'string',
       },
+      product_category: {
+        title: 'Category',
+        type: 'String',
+      },
       product_price: {
         title: 'Price',
         type: 'number',
