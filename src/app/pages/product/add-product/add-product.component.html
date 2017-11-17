@@ -16,11 +16,7 @@
             <div class="form-group">
               <label for="inputCategory">Category</label>
               <select formControlName = "productCategory" class="form-control" id="inputCategory">
-                <option>Charger</option>
-                <option>Cable</option>
-                <option>Screen Guard</option>
-                <option>Power Bank</option>
-                <option>Others</option>
+                <option *ngFor="let item of categoryList" [ngValue]="item.category_name">{{item.category_name}}</option>
               </select>
             </div>
           </div>

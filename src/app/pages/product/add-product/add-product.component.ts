@@ -12,7 +12,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AddProductComponent {
 ProductForm : FormGroup; 
-	
+categoryList : Object;	
 	constructor(public rest : RestfullService, private fb : FormBuilder){
 
 		this.ProductForm = this.fb.group({
@@ -26,7 +26,11 @@ ProductForm : FormGroup;
 			stock : ['', Validators.required],
 			quantity : [null, Validators.required],
 		})
-
+		if(localStorage.getItem('categoryData')) {
+			this.categoryList = JSON.parse(localStorage.getItem('categoryData'));
+		} else {
+			this.getCategory();
+		}
 	}
 	addProduct(){
 		console.log(this.ProductForm.value);
@@ -38,6 +42,20 @@ ProductForm : FormGroup;
 				else
 					alert("Error while Adding Product");
 				result.unsubscribe();
+			},err=>{
+				alert("Oops something went wrong!");
+				result.unsubscribe();
+			}
+		);
+	}
+	getCategory() {
+		var result = this.rest.getAllCategory().subscribe(
+			res=>{
+		if(res.success && res.length > 0) {
+			console.log(res);
+			localStorage.setItem('categoryData', JSON.stringify(res.data));
+		}
+		result.unsubscribe();
 			},err=>{
 				alert("Oops something went wrong!");
 				result.unsubscribe();

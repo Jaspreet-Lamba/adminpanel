@@ -63,6 +63,7 @@ export class ViewCategoryComponent {
 			res=>{
         if(res.success && res.length > 0) {
           console.log(res);
+          localStorage.setItem('categoryData', JSON.stringify(res.data));
           this.source.load(res.data);
         }
         result.unsubscribe();
