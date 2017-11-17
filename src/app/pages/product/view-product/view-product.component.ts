@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { RestfullService } from '../../../restfull/restfull.service'
 
 import { SmartTableService } from '../../../@core/data/smart-table.service';
 
@@ -29,34 +30,47 @@ export class ViewProductComponent {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'Product ID',
+      product_id: {
+        title: 'Id',
         type: 'number',
       },
-      firstName: {
-        title: 'Product Name',
+      product_name: {
+        title: 'Name',
         type: 'string',
       },
-      lastName: {
-        title: 'Quantity',
-        type: 'string',
+      product_price: {
+        title: 'Price',
+        type: 'number',
       },
-      username: {
+      stock: {
         title: 'Stock',
         type: 'string',
       },
-      email: {
-        title: 'E-mail',
-        type: 'string',
+      quantity: {
+        title: 'Quantity',
+        type: 'number',
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(public rest : RestfullService, private service: SmartTableService) {
+    // const data = this.service.getData();
+    // console.log(data);
+    // this.source.load(data);
+    var result = this.rest.getAllProducts().subscribe(
+			res=>{
+        if(res.success && res.length > 0) {
+          console.log(res);
+          this.source.load(res.data);
+        }
+        result.unsubscribe();
+			},err=>{
+				alert("Oops something went wrong!");
+				result.unsubscribe();
+			}
+		);
   }
 
   onDeleteConfirm(event): void {

@@ -1,13 +1,15 @@
+
 <div class="row">
   <div class="col-md-12">
     <nb-card>
       <nb-card-header>Add Product</nb-card-header>
       <nb-card-body>
+      <form [formGroup] = "ProductForm" (ngSubmit) = "addProduct()">
         <div class="row">
           <div class="col-sm-6">
               <div class="form-group">
                 <label for="inputProductName">Product Name</label>
-                <input type="text" class="form-control" id="inputProductName" placeholder="Product Name"/>
+                <input formControlName = "productName" type="text" class="form-control" id="inputProductName" placeholder="Product Name"/>
               </div>
           </div>
           <div class="col-sm-6">
@@ -15,9 +17,10 @@
               <label for="inputCategory">Category</label>
               <select class="form-control" id="inputCategory">
                 <option>Charger</option>
-                <option>Charger</option>
-                <option>Charger</option>
-                <option>Chargerg</option>
+                <option>Cable</option>
+                <option>Screen Guard</option>
+                <option>Power Bank</option>
+                <option>Others</option>
               </select>
             </div>
           </div>
@@ -26,13 +29,13 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="inputPrice">Price</label>
-              <input type="text" class="form-control" id="inputPrice" placeholder="Price">
+              <input type="text" formControlName = "productPrice" class="form-control" id="inputPrice" placeholder="Price">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="inputSpecialPrice">Special Price</label>
-              <input type="text" class="form-control" id="inputSpecialPrice" placeholder="Special Price">
+              <input type="text" formControlName = "productSplPrice" class="form-control" id="inputSpecialPrice" placeholder="Special Price">
             </div>
           </div>
         </div>
@@ -40,13 +43,13 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="inputQuantity">Quantity</label>
-              <input type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
+              <input type="number" formControlName = "quantity" class="form-control" id="inputQuantity" placeholder="Quantity">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="inputStock">Stock</label>
-              <select class="form-control" id="inputStock">
+              <select class="form-control" id="inputStock" formControlName = "stock">
                 <option>In Stock</option>
                 <option>Out of Stock</option>
               </select>
@@ -57,7 +60,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="inputProductPicture">Product Picture</label>
-              <input type="file" class="form-control" id="inputProductPicture">
+              <input type="file" class="form-control" id="inputProductPicture" formControlName = "productImage">
             </div>
           </div>
         </div>
@@ -69,7 +72,7 @@
                   Short Description
                 </nb-card-header>
                 <nb-card-body id="shortDesc">
-                  <ckeditor [config]="{ extraPlugins: 'divarea', height: '320' }"></ckeditor>
+                  <ckeditor formControlName = "productShortDesc" [config]="{ extraPlugins: 'divarea', height: '320' , color: '#99000'}"></ckeditor>
                 </nb-card-body>
               </nb-card>
             </div>
@@ -83,13 +86,14 @@
                   Long Description
                 </nb-card-header>
                 <nb-card-body id="longDesc">
-                  <ckeditor [config]="{ extraPlugins: 'divarea', height: '320' }"></ckeditor>
+                  <ckeditor formControlName="productFullDesc"  [config]="{ extraPlugins: 'divarea', height: '320' }"></ckeditor>
                 </nb-card-body>
               </nb-card>
             </div>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </nb-card-body>
     </nb-card>
   </div>
