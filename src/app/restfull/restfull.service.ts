@@ -12,6 +12,7 @@ export class RestfullService {
 	Urls = {
 		getAllProducts : this.BaseUrl + "getAllProducts",
 		addProduct : this.BaseUrl + "addProduct",
+		updateProduct: this.BaseUrl + "updateProduct",
 		addCategory : this.BaseUrl + "addCategory",
 		getAllCategory : this.BaseUrl + "getAllCategory"
 	}
@@ -24,6 +25,11 @@ export class RestfullService {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 		return this.http.post(this.Urls.addProduct, obj, options).map(data=>data = data.json());
+	}
+	updateProduct(obj) :Observable<any>{
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(this.Urls.updateProduct, obj, options).map(data=>data = data.json());
 	}
 	addCategory(obj) :Observable<any>{
 		let headers = new Headers({ 'Content-Type': 'application/json' });

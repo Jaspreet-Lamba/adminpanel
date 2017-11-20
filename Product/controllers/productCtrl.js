@@ -4,7 +4,7 @@ var auth = require('../auth.json');
 var Product = require("../models/product");
 
 exports.addProduct = function(req,res){
-    productId = 1;
+    productId = 3;
     
      var product = new Product({ // Making Object of Users schema 
 	    product_id : productId,
@@ -39,6 +39,51 @@ exports.addProduct = function(req,res){
         }
     })
  }
+ exports.updateProduct = function(req,res){
+    
+    Product.findOne({
+        product_id: req.body.productId
+    }, function (err, productResp) {
+        if (err) {
+            res.json(err);
+        }
+        productResp.product_id = req.body.productId;
+        productResp.product_name = req.body.productName;
+        productResp.product_category = req.body.productCategory;
+        productResp.product_price = req.body.productPrice;
+        productResp.product_image = req.body.productImage;
+        productResp.product_splprice = req.body.productSplPrice;
+        productResp.stock = req.body.stock;
+        productResp.quantity = req.body.quantity;
+        productResp.product_shortdesc = req.body.productShortDesc;
+        productResp.product_fulldesc = req.body.productFullDesc;
+
+        productResp.save(function (err, response) {
+            if (err) {
+                res.json(err);
+            }
+            else{
+                if(response != null || response != undefined ){
+                    var token = jwt.sign({
+                        "status": "true",
+                        "product_id": response.product_id,
+                    }, auth.secret)
+                    res.json({
+                        "success": true
+                    })
+                }
+                else{
+                    var token = jwt.sign({
+                        "product_id": response
+                    }, auth.secret)
+                    res.json({
+                        "success": false,
+                    })
+                }
+            }
+        })
+    })
+ }
  exports.getProduct = function (req, res) {
 
     var product_id = req.body.productid;
@@ -51,32 +96,32 @@ exports.addProduct = function(req,res){
         }
         else{
         	if(response != null || response != undefined ){
-        	var token = jwt.sign({
-                "status": "true",
-                "product_id": response.product_id,
-                "message": "product Found"
-            }, auth.secret)
-            res.json({
-                "success": true,
-                "message" : "Product Found",
-                "token" : token,
-                "body": response
-            })
+            	var token = jwt.sign({
+                    "status": "true",
+                    "product_id": response.product_id,
+                    "message": "product Found"
+                }, auth.secret)
+                res.json({
+                    "success": true,
+                    "message" : "Product Found",
+                    "token" : token,
+                    "body": response
+                })
+            }
+            else{
+            	var token = jwt.sign({
+                    "status": "true",
+                    "product_id": response,
+                    "message": "product Not Found"
+                }, auth.secret)
+                res.json({
+                    "success": true,
+                    "message" : "Product Not Found",
+                    "Token" : token,
+                    "body": response
+                })
+            }
         }
-        else{
-        	var token = jwt.sign({
-                "status": "true",
-                "product_id": response,
-                "message": "product Not Found"
-            }, auth.secret)
-            res.json({
-                "success": true,
-                "message" : "Product Not Found",
-                "Token" : token,
-                "body": response
-            })
-        }
-    }
     });
 }
 

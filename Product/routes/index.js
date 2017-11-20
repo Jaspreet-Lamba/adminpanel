@@ -10,6 +10,9 @@ var categoryController = require('../controllers/categoryCtrl');
 router.route('/v1/addProduct')
 .post(productController.addProduct)
 
+router.route('/v1/updateProduct')
+.post(productController.updateProduct)
+
 router.route('/v1/getAllProducts')
 .get(productController.getAllProducts)
 

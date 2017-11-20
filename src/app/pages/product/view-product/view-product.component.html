@@ -2,8 +2,8 @@
   <nb-card-header>
     View Products 
   </nb-card-header>
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+  <nb-card-body> 
+    <ng2-smart-table [settings]="settings" [source]="source" (add)="onAddProduct($event)" (edit)="onEditProduct($event)" (delete)="onDeleteProduct($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

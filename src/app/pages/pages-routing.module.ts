@@ -42,7 +42,7 @@ const routes: Routes = [{
   // },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'product/view',
     pathMatch: 'full',
   }],
 }];

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 import { LocalDataSource } from 'ng2-smart-table';
 import { RestfullService } from '../../../restfull/restfull.service'
 
@@ -6,19 +7,15 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 
 @Component({
   selector: 'ngx-view-product',
-  styles: [`
-    nb-card {
-      transform: translate3d(0, 0, 0);
-    }
-  `],
+  styles: ['./view-product.component.scss'],
   templateUrl: './view-product.component.html',
 })
 export class ViewProductComponent {
-	settings = {
+  settings = {
     add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
+      addButtonContent: '',
+      createButtonContent: '',
+      cancelButtonContent: '',
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -29,6 +26,7 @@ export class ViewProductComponent {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
     },
+    mode : 'external',
     columns: {
       product_id: {
         title: 'Id',
@@ -59,7 +57,7 @@ export class ViewProductComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(public rest : RestfullService, private service: SmartTableService) {
+  constructor(public rest : RestfullService, private service: SmartTableService, private router: Router) {
     // const data = this.service.getData();
     // console.log(data);
     // this.source.load(data);
@@ -77,11 +75,17 @@ export class ViewProductComponent {
 		);
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+  onDeleteProduct(event): void {
+    alert("onDeleteProduct");
+  }
+
+  onEditProduct(event): void {
+    console.log(event.data);
+    localStorage.setItem('productData',JSON.stringify(event.data));
+    this.router.navigate(['/pages/product/add']);
+  }
+
+  onAddProduct(event): void {
+    this.router.navigate(['/pages/product/add']);
   }
 }
