@@ -17,32 +17,9 @@ const routes: Routes = [{
   },{
     path: 'category',
     loadChildren: './category/category.module#CategoryModule',
-  },
-  // {
-  //   path: 'ui-features',
-  //   loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-  // }, {
-  //   path: 'components',
-  //   loadChildren: './components/components.module#ComponentsModule',
-  // }, {
-  //   path: 'maps',
-  //   loadChildren: './maps/maps.module#MapsModule',
-  // }, {
-  //   path: 'charts',
-  //   loadChildren: './charts/charts.module#ChartsModule',
-  // }, {
-  //   path: 'editors',
-  //   loadChildren: './editors/editors.module#EditorsModule',
-  // }, {
-  //   path: 'forms',
-  //   loadChildren: './forms/forms.module#FormsModule',
-  // }, {
-  //   path: 'tables',
-  //   loadChildren: './tables/tables.module#TablesModule',
-  // },
-  {
+  },{
     path: '',
-    redirectTo: 'product/view',
+    redirectTo: '/login',
     pathMatch: 'full',
   }],
 }];
@@ -51,5 +28,4 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {
-}
+export class PagesRoutingModule {}

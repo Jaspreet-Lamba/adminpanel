@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
-import { RestfullService } from '../../../restfull/restfull.service'
+import { RestfullService } from '../../../restfull/restfull.service';
 
 import { SmartTableService } from '../../../@core/data/smart-table.service';
 

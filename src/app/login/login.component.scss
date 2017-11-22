@@ -1,0 +1,25 @@
+nb-auth-block {
+	font-family: Roboto;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #a1a1e5;
+    background: #2f296b;
+    min-height: 100vh;
+    display: block;
+    padding: 2.5em;
+
+    .innerContainer {
+    	height: calc(100vh - 2 * 2.5rem);
+    	font-size: 1rem;
+	    line-height: 1.25;
+	    background: #3d3780;
+	    color: #d1d1ff;
+	    border-radius: 0.5rem;
+	    box-shadow: 0 8px 20px 0 rgba(40, 37, 89, 0.6);
+	    font-weight: 400;
+	    padding: 5.25rem;
+	}
+    h2{
+    	font-size: 40px;
+    }
+}
