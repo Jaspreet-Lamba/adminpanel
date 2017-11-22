@@ -1,0 +1,35 @@
+<!-- Generated template for the TabComponent component -->
+<!-- <div class="tabbar">
+    <div class="tabs_section">
+        <ion-icon name="person" item-start></ion-icon>
+    </div>
+    <div class="tabs_section">
+        <ion-icon name="people" item-start></ion-icon>
+    </div>
+    <div class="tabs_section">
+        <ion-icon name="chatboxes" item-start></ion-icon>
+    </div>
+    <div class="tabs_section">
+        <ion-icon name="ios-card-outline" item-start></ion-icon>
+    </div>
+</div> -->
+<!-- <ion-tabs>
+    <ion-tab tabTitle="" tabIcon="person"></ion-tab>
+    <ion-tab tabTitle="" tabIcon="people"></ion-tab>
+    <ion-tab tabTitle="" tabIcon="chatboxes"></ion-tab>
+	<ion-tab tabTitle="" tabIcon="ios-card-outline"></ion-tab> 
+</ion-tabs> -->
+<div class="tabbar">
+    <div class="tabs_section" [ngClass]="isPageActive=='Home' ? 'active' : ''">
+        <ion-icon name="person" (click)="openPage('HomePage')" item-start></ion-icon>
+    </div>
+    <div class="tabs_section" [ngClass]="isPageActive=='HotorNot' ? 'active' : ''">
+        <ion-icon name="people" (click)="openPage('HotorNotPage')" item-start></ion-icon>
+    </div>
+    <div class="tabs_section" [ngClass]="isPageActive=='Message' ? 'active' : ''">
+        <ion-icon name="chatboxes" (click)="openPage('MessagePage')" item-start></ion-icon>
+    </div>
+    <div class="tabs_section" [ngClass]="isPageActive=='News' ? 'active' : ''">
+        <ion-icon name="ios-card-outline" (click)="openPage('NewsPage')" item-start></ion-icon>
+    </div>
+</div> 

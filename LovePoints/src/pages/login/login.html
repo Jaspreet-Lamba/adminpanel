@@ -1,0 +1,19 @@
+<ion-content class="card-background-page">
+  <ion-card>
+    <img src="assets/images/login3.jpg"/>
+    <div class="card-title"> 
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-input type="text" placeholder="Username" value="" [(ngModel)]="loginUser.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-start></ion-icon>
+        <ion-input  placeholder="Password" type="password" value="" [(ngModel)]="loginUser.password"></ion-input>
+      </ion-item>
+      <ion-item class="login_buttons">
+        <button  class="login_button" ion-button (click) = "onLogin()">Login</button>
+        <button  ion-button (click) = "onRegister()">Sign Up</button>
+      </ion-item>
+    </div>
+  </ion-card>
+</ion-content>

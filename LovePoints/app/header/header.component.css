@@ -1,0 +1,23 @@
+@media only screen and (max-width : 768px){
+  .Header .navbar-brand {
+  padding: 0px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+.Header .navbar-brand>img {
+  height: 100%;
+  width: auto;
+  padding: 7px 14px; 
+}
+}
+
+
+/* EXAMPLE 8 - Center Background */
+.Header .navbar-brand {
+  background: url(https://www.kelltontech.com/sites/default/files/logo_1.png) center / contain no-repeat;
+  width: 200px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}

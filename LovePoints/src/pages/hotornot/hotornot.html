@@ -1,0 +1,43 @@
+<ion-content>
+  <ion-fab top left>
+    <button ion-fab mini menuToggle><ion-icon name="menu"></ion-icon></button>
+  </ion-fab>
+  <div class="section_1">
+    <div class="hotornot">
+      <button ion-button (click)="goToHotorVote()">Go to HotorNot-Vote</button>
+    </div>
+    <div class="hotornot">
+      <button ion-button (click)="goToHoterRegion()">Hot or Not of your region</button>
+    </div>
+  </div>
+  <div class="section_2">
+    <div class="hotornot">
+      <button ion-button>You have 2 Contact Requests</button> 
+    </div>
+    <div class="creditpoints">
+      Your current Credit Points are: 25 Points
+    </div>
+    <div class="hotvotes">
+      Your current HotVotes are: 3
+    </div>
+  </div>
+  <div id="overlay" class="overlay" *ngIf="showUserCreditOptions"></div>
+  <div data-pop="pop-swirl" id="popup" class="member_profile" *ngIf="showUserCreditOptions" [ngClass]="showUserCreditOptions==true ? 'show' : ''">
+    <ion-icon id="popupclose" class="closeProfile" name="close" (click)="closePopUp()"></ion-icon> 
+    <div class="section_3">
+      <div class="hotornot">
+        <button ion-button icon-left>
+          <ion-icon name="videocam"></ion-icon>
+          Watch Video to earn Credit Points
+        </button>
+      </div>
+      <div class="hotornot">
+        <button ion-button icon-left>
+          <ion-icon name="card"></ion-icon>
+          Shop for Credit Points
+        </button>
+      </div>
+    </div>
+  </div>
+  <tab></tab>
+</ion-content>
