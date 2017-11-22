@@ -4,7 +4,7 @@ var auth = require('../auth.json');
 var Product = require("../models/product");
 
 exports.addProduct = function(req,res){
-    productId = 3;
+    productId = 4;
     
      var product = new Product({ // Making Object of Users schema 
 	    product_id : productId,
