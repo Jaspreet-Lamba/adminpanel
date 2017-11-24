@@ -4,42 +4,49 @@ var auth = require('../auth.json');
 var Product = require("../models/product");
 
 exports.addProduct = function(req,res){
-    productId = 4;
-    
-     var product = new Product({ // Making Object of Users schema 
-	    product_id : productId,
-	    product_name : req.body.productName,
-	    product_category : req.body.productCategory,
-        product_price : req.body.productPrice,
-	    product_image : req.body.productImage,
-	    product_splprice : req.body.productSplPrice,
-	    stock : req.body.stock,
-	    quantity : req.body.quantity,
-	    product_shortdesc : req.body.productShortDesc,
-	    product_fulldesc : req.body.productFullDesc
-    });
-     product.save(function (err, response) {
-
-        if(err){
+    Product.find({}, function (err, resp) {
+         if(err){
             return res.json({
-                 "error" : err
+                "error" : err
             });
         }
         else{
-        	var token = jwt.sign({
-                "status": "true",
-                "product_id": response.product_id,
-                "message": "product added"
-            }, auth.secret)
-            res.json({
-                "success": true,
-                "message" : "Product Added",
-                "token" : token
+            var product = new Product({ 
+                product_id : resp[resp.length-1].product_id + 1,
+                product_name : req.body.productName,
+                product_category : req.body.productCategory,
+                product_price : req.body.productPrice,
+                product_image : req.body.productImage,
+                product_splprice : req.body.productSplPrice,
+                stock : req.body.stock,
+                quantity : req.body.quantity,
+                product_shortdesc : req.body.productShortDesc,
+                product_fulldesc : req.body.productFullDesc
+            });
+            product.save(function (err, response) {
+                if(err){
+                    return res.json({
+                         "error" : err
+                    });
+                }
+                else{
+                    var token = jwt.sign({
+                        "status": "true",
+                        "product_id": response.product_id,
+                        "message": "product added"
+                    }, auth.secret)
+                    res.json({
+                        "success": true,
+                        "message" : "Product Added",
+                        "token" : token
+                    })
+                }
             })
         }
-    })
- }
- exports.updateProduct = function(req,res){
+    });
+}
+
+exports.updateProduct = function(req,res){
     
     Product.findOne({
         product_id: req.body.productId
@@ -84,10 +91,51 @@ exports.addProduct = function(req,res){
         })
     })
  }
+
+ exports.deleteProduct = function(req,res){
+    
+    Product.remove({
+        product_id: req.body.productId
+    }, function (error, resp) {
+        if (error) {
+            res.json(error);
+        }
+        else{
+            if(resp != null || resp != undefined ){
+                Product.find({}, function (err, response) {
+                    if(err){
+                        return res.json({
+                            "error" : err
+                        });
+                    }
+                    else{
+                        var token = jwt.sign({
+                            "status": "true",
+                        }, auth.secret)
+                        res.json({
+                            "success": true,
+                            "token" : token,
+                            "data": response,
+                            "length" : response.length
+                        })
+                    }
+                });
+            }
+            else{
+                var token = jwt.sign({
+                    "product_id": response
+                }, auth.secret)
+                res.json({
+                    "success": false,
+                })
+            }
+        }
+    })
+}
+
  exports.getProduct = function (req, res) {
 
     var product_id = req.body.productid;
-
     Product.findOne({ productid: product_id }, function (error, response) {
          if(err){
             return res.json({

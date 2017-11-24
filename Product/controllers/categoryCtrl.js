@@ -30,6 +30,45 @@ exports.addCategory = function(req,res){
         }
     })
 }
+
+exports.updateCategory = function(req,res){
+    
+    Category.findOne({
+        category_id: req.body.categoryId
+    }, function (err, categoryResp) {
+        if (err) {
+            res.json(err);
+        }
+        categoryResp.category_id = req.body.categoryId;
+        categoryResp.category_name = req.body.categoryName;
+        categoryResp.status = req.body.status;
+        
+        categoryResp.save(function (err, response) {
+            if (err) {
+                res.json(err);
+            }
+            else{
+                if(response != null || response != undefined ){
+                    var token = jwt.sign({
+                        "status": "true",
+                        "product_id": response.category_id,
+                    }, auth.secret)
+                    res.json({
+                        "success": true
+                    })
+                }
+                else{
+                    var token = jwt.sign({
+                        "product_id": response
+                    }, auth.secret)
+                    res.json({
+                        "success": false,
+                    })
+                }
+            }
+        })
+    })
+ }
  
 exports.getAllCategory = function (req, res) {
     Category.find({}, function (err, response) {

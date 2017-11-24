@@ -50,6 +50,7 @@ buttontext : string;
 		}
 		if(localStorage.getItem('categoryData')) {
 			this.categoryList = JSON.parse(localStorage.getItem('categoryData'));
+			//console.log(this.categoryList);	
 		} else {
 			this.getCategory();
 		}
@@ -89,17 +90,7 @@ buttontext : string;
 			}
 		);
 	}
-	deleteProduct() {
-		// Series.remove({
-		// 	series_id: id1
-		// }, function (err) {
-		// 	if (err) {
-		// 		res.json(err);
-		// 	}
-
-		// 	res.json("success");
-		// })
-	}
+	
 	refreshProductFormData() {
 		this.ProductForm.setValue({
 			'productId':'',

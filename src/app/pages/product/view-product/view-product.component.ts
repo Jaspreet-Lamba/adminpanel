@@ -27,6 +27,9 @@ export class ViewProductComponent {
       confirmDelete: true,
     },
     mode : 'external',
+    actions: {
+      add: false
+    },
     columns: {
       product_id: {
         title: 'Id',
@@ -64,7 +67,6 @@ export class ViewProductComponent {
     var result = this.rest.getAllProducts().subscribe(
 			res=>{
         if(res.success && res.length > 0) {
-          console.log(res);
           this.source.load(res.data);
         }
         result.unsubscribe();
@@ -76,11 +78,31 @@ export class ViewProductComponent {
   }
 
   onDeleteProduct(event): void {
-    alert("onDeleteProduct");
+    var data = {
+      productId : event.data.product_id
+    };
+    var result = this.rest.deleteProduct(data).subscribe(
+			res=>{
+				//console.log(res);
+				if(res.success) {
+          alert("Product Deleted");
+          if(res.success && res.length > 0) {
+            this.source.load(res.data);
+          } else if(res.length == 0) {
+            this.source.load(null);
+          }
+				}
+				else
+					alert("Error while Deleting Product");
+				result.unsubscribe();
+			},err=>{
+				alert("Oops something went wrong!");
+				result.unsubscribe();
+			}
+		);
   }
 
   onEditProduct(event): void {
-    console.log(event.data);
     localStorage.setItem('productData',JSON.stringify(event.data));
     this.router.navigate(['/pages/product/add']);
   }

@@ -13,11 +13,17 @@ router.route('/v1/addProduct')
 router.route('/v1/updateProduct')
 .post(productController.updateProduct)
 
+router.route('/v1/deleteProduct')
+.post(productController.deleteProduct)
+
 router.route('/v1/getAllProducts')
 .get(productController.getAllProducts)
 
 router.route('/v1/addCategory')
 .post(categoryController.addCategory)
+
+router.route('/v1/updateCategory')
+.post(categoryController.updateCategory)
 
 router.route('/v1/getAllCategory')
 .get(categoryController.getAllCategory)

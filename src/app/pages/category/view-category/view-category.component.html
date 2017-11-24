@@ -3,12 +3,13 @@
     <nb-card>
       <nb-card-header>Add/Update Category</nb-card-header>
       <nb-card-body>
-        <form [formGroup] = "CategoryForm" (ngSubmit) = "addCategory()">
+        <form [formGroup] = "CategoryForm" (ngSubmit) = "buttontext=='Add Category' ? addCategory() : updateCategory()">
           <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                   <label for="inputCategoryName">Category Name</label>
                   <input formControlName="categoryName" type="text" class="form-control" id="inputCategoryName" placeholder="Category Name"/>
+                  <input formControlName="categoryId" type="hidden" class="form-control" id="inputCategoryId"/>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -21,7 +22,7 @@
                 </div>
               </div>
           </div>
-          <button type="submit" class="btn btn-primary">Add/Update Category</button>
+          <button type="submit" class="btn btn-primary">{{buttontext}}</button>
         </form>
       </nb-card-body>
     </nb-card>
@@ -32,7 +33,7 @@
     View Category 
   </nb-card-header>
   <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <ng2-smart-table [settings]="settings" [source]="source" (edit)="onEditCategory($event)" (deleteConfirm)="onDeleteCategory($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

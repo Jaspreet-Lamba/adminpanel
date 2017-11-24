@@ -19,7 +19,7 @@ const routes: Routes = [{
     loadChildren: './category/category.module#CategoryModule',
   },{
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   }],
 }];

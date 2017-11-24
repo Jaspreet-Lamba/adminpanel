@@ -14,6 +14,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './view-category.component.html',
 })
 export class ViewCategoryComponent {
+  buttontext : string;
 	settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -28,6 +29,11 @@ export class ViewCategoryComponent {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+    },
+    mode : 'external',
+    actions: {
+      add: false,
+      delete: false
     },
     columns: {
       category_id: {
@@ -51,8 +57,10 @@ export class ViewCategoryComponent {
   constructor(private service: SmartTableService, public rest : RestfullService, private fb : FormBuilder) {
     // const data = this.service.getData();
     // this.source.load(data);
+    this.buttontext = "Add Category";
     this.CategoryForm = this.fb.group({
-			categoryName : ['', Validators.required],
+      categoryId : [''],
+      categoryName : ['', Validators.required],
 			status : ['', Validators.required],
     })
     this.getCategory();
@@ -62,10 +70,10 @@ export class ViewCategoryComponent {
     var result = this.rest.getAllCategory().subscribe(
 			res=>{
         if(res.success && res.length > 0) {
-          console.log(res);
           localStorage.setItem('categoryData', JSON.stringify(res.data));
           this.source.load(res.data);
         }
+        this.refreshCategoryFormData();
         result.unsubscribe();
 			},err=>{
 				alert("Oops something went wrong!");
@@ -74,10 +82,10 @@ export class ViewCategoryComponent {
 		);
   }
   addCategory(){
-		// console.log(this.CategoryForm.value);
+		//console.log(this.CategoryForm.value);
 		var result = this.rest.addCategory(this.CategoryForm.value).subscribe(
 			res=>{
-        console.log(res);
+        //console.log(res);
 				if(res.success){
           this.getCategory();
 					alert("Category Added");
@@ -89,13 +97,49 @@ export class ViewCategoryComponent {
 				result.unsubscribe();
 			}
 		);
-	}
+  }
 
-  onDeleteConfirm(event): void {
+  updateCategory() {
+    var result = this.rest.updateCategory(this.CategoryForm.value).subscribe(
+			res=>{
+        //console.log(res);
+				if(res.success){
+          this.getCategory();
+					alert("Category Updated");
+        }else
+					alert("Error while Updating Category");
+				result.unsubscribe();
+			},err=>{
+				alert("Oops something went wrong!");
+				result.unsubscribe();
+			}
+		);
+  }
+  
+  onEditCategory(event): void {
+    console.log(event.data);
+    this.buttontext = "Update Category";
+    this.CategoryForm.setValue({
+      'categoryId':event.data.category_id,
+      'categoryName':event.data.category_name,
+      'status':event.data.status,
+    });
+  }
+
+  onDeleteCategory(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
   }
+
+  refreshCategoryFormData() {
+		this.CategoryForm.setValue({
+			'categoryId':'',
+			'categoryName':'',
+			'status':'',
+		});
+		this.buttontext = "Add Category";
+	}
 }
