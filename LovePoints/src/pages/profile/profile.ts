@@ -26,15 +26,19 @@ export class ProfilePage {
 			console.log(data1);
 			this.loggedInUserName = data1.user.firstName + ' ' + data1.user.lastName;
 			this.loggedInUserData = {
-				"name" : this.loggedInUserName,
+				"name" : data1.user.firstName + ' ' + data1.user.lastName,
 				"profileStatus" : data1.user.role,
 				"coinStatus" : "10",
 				"hotVotes": "6",
 				"userId" : data1.user._id,
-				"email" : data1.user.email
+				"email" : data1.user.email,
+				"profilePicture" : data1.user.profilePicture
 			};
+			this.defaultProfilePic = [
+				{ "pic":data1.user.profilePicture }
+			];
 			
-			console.log(this.loggedInUserData);
+			console.log(this.defaultProfilePic);
 		}
 	}
 
@@ -51,8 +55,8 @@ export class ProfilePage {
           text: 'Camera',
           icon: 'camera',
           handler: () => {
-						this.openCamera('camera');
-					}
+			this.openCamera('camera');
+		  }
         },
         {
           text: 'Gallery',

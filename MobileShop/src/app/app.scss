@@ -14,3 +14,34 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.header {
+	.toolbar {
+    	padding: 14px 15px 12px;
+    }
+    .toolbar-background {
+	    border-color: #b2b2b2;
+		background: #0e0e0e;
+		color: #fff;
+	}
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0 0 0px;
+}
+.menu-enabled {
+	.header {
+		.toolbar {
+	    	padding: 14px 15px 12px;
+	    }
+	    .toolbar-background {
+		    border-color: #b2b2b2;
+			background: #fff;
+			color: #fff;
+		}
+	}
+}
+.menu-inner {
+	z-index: 320;
+    height: 100%;
+    overflow: auto;
+    padding-top: 20px;
+}

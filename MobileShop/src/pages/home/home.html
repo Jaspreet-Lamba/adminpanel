@@ -1,18 +1,100 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle right>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    <ion-icon class="search" *ngIf="showSearchIcon" (click)="showSearchBar('search')" name="search"></ion-icon>
+    <ion-icon class="filter" name="ios-funnel-outline" right></ion-icon>
+    <ion-icon name="menu" menuToggle right></ion-icon>
+    <div class="primary-header" *ngIf="showSearchDiv">
+      <div class="search-product"> 
+        <input list="browsers" no-special-char id="searchedItemInInput" type="text" placeholder="Search" data-ng-model="searchInput" data-ng-keyup="showSearchResultOnEnter(searchInput, $event)" data-ng-click="blankInputTextBoxOnBlur(searchInput)" auto-focus="true" maxlength="30" ng-maxlength="30" autofocus/>
+        <ion-icon class="close" name="close" (click)="showSearchBar('close')"></ion-icon>
+      </div>
+    </div>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content class="home_page">
+  <aside class="side-nav">
+    <ul>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <li>
+        <div class="menu-item">
+          <span ngClass="item"><ion-icon name="menu"></ion-icon></span>
+        </div>
+      </li>
+      <!-- <li data-ng-repeat="item in viewObject.menu | filter : checkCategory">
+          <a data-ui-sref="home.category({category:item})" data-ng-class="{'active': viewObject.currentCategoryname == '{{item}}'}">
+              <span data-ng-class="item"></span>
+          </a>
+      </li> -->
+    </ul>
+  </aside>
+  <div class="cart">
+    <div data-ng-click="checkValue()">
+        <span class="cart-total-item" data-ng-bind="$root.cartCount">0</span>
+        <ion-icon class="cart-icon" name="md-cart"></ion-icon>
+    </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <div class="cart-item-detail" data-ng-show="viewObject.showProductInfoPopUp" data-ng-class="{'kfc-transition':viewObject.showProductInfoPopUp ,'':!viewObject.showProductInfoPopUp} ">
+        <div class="clearfix cart-product">
+            <strong class="item-name"> Added</strong>
+            <span class="item-price">
+                <sup><small class="webRupee">rs</small></sup>
+                100
+            </span>
+        </div>
+        <div class="btn-group">
+            <button class="btn" data-ng-click="backtoHome($event)">Back to menu</button>
+            <button class="btn active-btn" data-ng-click="checkout()">Checkout</button>
+        </div>
+    </div>
+  </div>
 </ion-content>

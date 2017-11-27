@@ -25,19 +25,21 @@ export class MyApp implements OnInit {
     var data = localStorage.getItem('userDetails');
     if(data) {
       var data1 = JSON.parse(data);
-      console.log("user logged in");
-      this.rootPage = NewsPage;
+      console.log(data1);
       this.loggedInUserName = data1.user.firstName + ' ' + data1.user.lastName;
       this.loggedInUserData = {
         "name" : this.loggedInUserName,
-        "profileStatus" : "VIP",
+        "profileStatus" : data1.user.role,
         "coinStatus" : "10",
-        "hotVotes": "6"
+        "hotVotes": "6",
+        "profilePicture": data1.user.profilePicture
       };
-      console.log(this.loggedInUserData);
+     // console.log(this.loggedInUserData);
+      this.rootPage = NewsPage;
     } else {
       console.log("user needs to log in");
-      this.rootPage = LoginPage; 
+      this.rootPage = LoginPage;
+      //this.rootPage = NewsPage; 
     }
   }
 
@@ -82,11 +84,12 @@ export class MyApp implements OnInit {
     .subscribe(BackgroundGeolocationResponse => {
 
     alert(BackgroundGeolocationResponse);
+    console.log(location);
 
     // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
     // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
     // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-    //this.backgroundGeolocation.finish(); // FOR IOS ONLY
+    this.backgroundGeolocation.finish(); // FOR IOS ONLY
 
     });
 
