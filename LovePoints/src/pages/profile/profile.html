@@ -1,0 +1,126 @@
+<ion-content class="card-background-page">
+  <ion-fab top left>
+    <button ion-fab mini menuToggle><ion-icon name="menu"></ion-icon></button>
+  </ion-fab>
+  <div class="image-section">
+    <!-- <img src="assets/images/profile2.jpg"/> -->
+    <ion-slides pager>
+
+      <ion-slide *ngFor="let img of defaultProfilePic">
+        <img [src]="img.pic">
+      </ion-slide>
+
+      <!-- <ion-slide>
+        <img src="assets/images/login2.jpg">
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/images/profile1.jpg">
+      </ion-slide> -->
+
+    </ion-slides>
+  </div> 
+  <div class="profile_section"> 
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/images/profile2.jpg">
+          <button ion-fab (click)="openCameraOptions()">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </ion-avatar>
+        <h2>Marty McFly</h2>
+        <p>26 yrs</p>
+        <p>Male</p>
+      </ion-item>
+    </ion-card>  
+    <ion-card>
+      <ion-item class="profile_status">
+          <ion-item>
+            <span>Profile Information</span>
+            <ion-icon name="create" (click) = "updateProfile()"></ion-icon>  
+          </ion-item>
+          <ion-item>
+            <ion-icon name="mail" item-start></ion-icon>
+            <ion-input type="text" placeholder="Email" disabled value= {{loggedInUserData.email}}></ion-input>
+          </ion-item>
+      </ion-item>
+      <ion-list radio-group>
+        <ion-item class="role_status">
+          <ion-icon name="person" item-start></ion-icon>
+        </ion-item>
+        <ion-item class="role_vip">
+          <ion-label>VIP</ion-label>
+          <ion-radio value="vip"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Standard</ion-label>
+          <ion-radio value="Standard"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item class="coin_status">
+          <ion-icon name="logo-usd"></ion-icon> 
+          <span>{{loggedInUserData.coinStatus}}</span>
+        </ion-item>
+        <ion-item class="votes_status">
+          <ion-icon name="bonfire"></ion-icon> 
+          <span>{{loggedInUserData.hotVotes}}</span>
+        </ion-item>
+      </ion-list>
+      <ion-item class="location">
+        <ion-item>
+          <ion-icon name="home" item-start></ion-icon>
+          <ion-input type="text" placeholder="Location" value="Germany">Germany</ion-input>
+          <ion-icon name="pin" item-end></ion-icon>
+        </ion-item>
+      </ion-item>
+    </ion-card> 
+    <ion-card>
+      <ion-item>
+          <ion-item>
+            <span>Interest</span>
+            <ion-icon name="heart"></ion-icon>  
+          </ion-item>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item class="profile_status">
+          <ion-item>
+            <span>Profile Setting</span>
+            <ion-icon name="create"></ion-icon>  
+          </ion-item>
+      </ion-item>
+      <ion-list radio-group>
+        <ion-item class="role_status">
+          <ion-icon name="person" item-start></ion-icon>
+        </ion-item>
+        <ion-item class="role_vip">
+          <ion-label>VIP</ion-label>
+          <ion-radio value="vip"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Standard</ion-label>
+          <ion-radio value="Standard"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-item class="logout">
+        <button ion-button icon-left full>
+          <ion-icon name="close"></ion-icon>
+          Delete Profile
+        </button>
+        <button ion-button icon-left full (click) = logout() >
+          <ion-icon name="log-out"></ion-icon>
+          Logout
+        </button>
+      </ion-item>
+    </ion-card>   
+  </div>
+  <!-- <tab></tab> -->
+  <!-- <ion-tabs>
+    <ion-tab tabTitle="" tabIcon="person"></ion-tab>
+    <ion-tab tabTitle="" tabIcon="people"></ion-tab>
+    <ion-tab tabTitle="" tabIcon="chatboxes"></ion-tab>
+	  <ion-tab tabTitle="" tabIcon="ios-card-outline"></ion-tab> 
+  </ion-tabs> -->
+</ion-content>

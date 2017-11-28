@@ -1,0 +1,120 @@
+page-home {
+    .fab-ios {
+        background-color: #222222;
+    }
+    .fab[mini] {
+        margin: 8px;
+        width: 45px;
+        height: 45px;
+        line-height: 40px;
+    }
+    .dislike_button {
+        left: 38%;
+        bottom: 16%;
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            color: #000;
+        
+            .icon {
+                font-size: 4rem;
+            }
+        }
+    }
+    .like_button {
+        left: 62%;
+        bottom: 16%;
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            color: #000;
+        
+            .icon {
+                font-size: 3.5rem;
+            }
+        }
+    }
+    #card-stack {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .swipe_card{
+            margin: 0px;
+            width: 100%;
+        }
+    }
+    
+    #card-stack ion-card {
+        position: absolute;
+        text-align: center;
+        top: 0%;
+        height: 100%;
+    }
+    .content {
+        .fixed-content {
+            margin-bottom: 0px !important;
+        }
+        .scroll-content {
+            margin-bottom: 0px !important;
+        }
+    }
+    .member_name {
+        width: 100%;
+        position: absolute;
+        /* border: 1px solid; */
+        bottom:8.8%;
+        text-align: left;
+        color: #fff;
+        font-size: 18px;
+        padding: 0px;
+        
+        .swipe_name{
+            background: rgba(113, 96, 108, 0.6);
+            padding: 15px;
+            
+            float: left;
+        }
+        .swipe_age{
+            background: rgba(334, 37, 71, 0.6);
+            padding: 15px;
+            
+            float: left;
+            text-align: center; 
+        }
+    }
+    .member_profile{ 
+        position: absolute;
+        bottom: 16.6%;
+        width: calc(100% - 35px);
+        height: 70%;
+        margin: 10px 10px 0px 10px;
+        text-align: left;
+        padding: 10px 13px;
+        background: rgba(0, 0, 0, 0.74);
+        overflow: auto;
+
+        .location span, .about_me span, .languages span {
+            font-family: "Roboto", "Helvetica Neue", sans-serif;
+        }
+        .description{
+            color: #fff;
+            border-left: 1px solid #CAA45A;
+            padding-left: 10px;
+            margin-left: 5px;
+            line-height: 23px;
+            margin-bottom: 10px;
+        }
+        .title {
+            display: inline-block;
+            font-size: 1.2em;
+            color: #CAA45A;
+            /* padding: 0px 0px; */
+            line-height: 30px;
+        }
+    }
+}

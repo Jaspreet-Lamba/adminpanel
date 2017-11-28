@@ -1,0 +1,338 @@
+page-hotornot{
+    .scroll-content { 
+        margin-bottom: 56px;
+        text-align: center;
+        background: #23282B;
+        
+        .section_1 {
+            position: relative;
+            margin: 25% 5% 10% 5%;
+
+            .hotornot {
+                display: inline-block;
+                margin: 5%;
+            }
+        }
+
+        .section_2 {
+            .hotornot {
+                margin: 0% 5% 15% 5%;
+            }
+            .creditpoints, .hotvotes{
+                color: #fff;
+                font-size: 1.8rem;
+                margin: 8%;
+            }
+        }
+
+        .section_3 {
+            margin: 10% 0% 5% 0%;
+            .hotornot {
+                width: 100%;
+                margin: 8% 0%;
+                .button{
+                    width: 100%;
+                }
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            background: rgba(226, 226, 226, 0.6);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .member_profile{ 
+            position: fixed;
+            top: 20%;
+            width: calc(100% - 35px);
+            height: auto;
+            margin: 10px 10px 0px 10px;
+            text-align: left;
+            padding: 10px 13px;
+            background: rgba(0, 0, 0, 0.74);
+            overflow: auto;
+            
+            .location span, .about_me span, .languages span {
+                font-family: "Roboto", "Helvetica Neue", sans-serif;
+            }
+            .description{
+                color: #fff;
+                border-left: 1px solid #CAA45A;
+                padding-left: 10px;
+                margin-left: 5px;
+                line-height: 23px;
+                margin-bottom: 10px;
+            }
+            .title {
+                display: inline-block;
+                font-size: 1.2em;
+                color: #CAA45A;
+                /* padding: 0px 0px; */
+                line-height: 30px;
+            }
+
+            .closeProfile{
+                font-size: 25px;
+                color: #CAA45A;
+                float: right;
+            }
+        }
+        .popupcontent {
+            padding: 10px;
+        }
+        @-webkit-keyframes pop-swirl {
+        0% {
+            transform: scale(0) rotate(360deg);
+        }
+
+        60% {
+            transform: scale(0.8) rotate(-10deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(0deg);
+        }
+        }
+        @-moz-keyframes pop-swirl {
+        0% {
+            transform: scale(0) rotate(360deg);
+        }
+
+        60% {
+            transform: scale(0.8) rotate(-10deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(0deg);
+        }
+        }
+        @-ms-keyframes pop-swirl {
+        0% {
+            transform: scale(0) rotate(360deg);
+        }
+
+        60% {
+            transform: scale(0.8) rotate(-10deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(0deg);
+        }
+        }
+        @-o-keyframes pop-swirl {
+        0% {
+            transform: scale(0) rotate(360deg);
+        }
+
+        60% {
+            transform: scale(0.8) rotate(-10deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(0deg);
+        }
+        }
+        @keyframes pop-swirl {
+        0% {
+            transform: scale(0) rotate(360deg);
+        }
+
+        60% {
+            transform: scale(0.8) rotate(-10deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(0deg);
+        }
+        }
+        @-webkit-keyframes anvil {
+        0% {
+            transform: scale(5) rotate(0);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+        }
+
+        50% {
+            transform: scale(1) rotate(-0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+        }
+
+        75% {
+            transform: scale(1) rotate(0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+        }
+
+        100% {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+            box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+        }
+        }
+        @-moz-keyframes anvil {
+        0% {
+            transform: scale(5) rotate(0);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+        }
+
+        50% {
+            transform: scale(1) rotate(-0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+        }
+
+        75% {
+            transform: scale(1) rotate(0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+        }
+
+        100% {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+            box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+        }
+        }
+        @-ms-keyframes anvil {
+        0% {
+            transform: scale(5) rotate(0);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+        }
+
+        50% {
+            transform: scale(1) rotate(-0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+        }
+
+        75% {
+            transform: scale(1) rotate(0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+        }
+
+        100% {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+            box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+        }
+        }
+        @-o-keyframes anvil {
+        0% {
+            transform: scale(5) rotate(0);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+        }
+
+        50% {
+            transform: scale(1) rotate(-0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+        }
+
+        75% {
+            transform: scale(1) rotate(0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+        }
+
+        100% {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+            box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+        }
+        }
+        @keyframes anvil {
+        0% {
+            transform: scale(5) rotate(0);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+        }
+
+        50% {
+            transform: scale(1) rotate(-0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+        }
+
+        75% {
+            transform: scale(1) rotate(0.2deg);
+            opacity: 1;
+            box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+        }
+
+        100% {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+            box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+        }
+        }
+        #popup[data-pop="slide-down"] {
+        top: -50%;
+        transition: all .5s ease-in-out;
+        }
+        #popup[data-pop="slide-down"].show {
+        visibility: visible;
+        z-index: 200;
+        opacity: 1;
+        top: 50%;
+        }
+        #popup[data-pop="slide-down"].show ~ #overlay {
+        opacity: 1;
+        visibility: visible;
+        z-index: 100;
+        }
+        #popup[data-pop="pop-in"] {
+        transform: scale(0);
+        transition: all .5s ease-in-out;
+        }
+        #popup[data-pop="pop-in"].show {
+        transform: scale(1);
+        visibility: visible;
+        z-index: 200;
+        opacity: 1;
+        }
+        #popup[data-pop="pop-in"].show ~ #overlay {
+        opacity: 1;
+        visibility: visible;
+        z-index: 100;
+        }
+        #popup[data-pop="pop-swirl"] {
+        transform: scale(0);
+        transition: all .5s ease-in-out;
+        }
+        #popup[data-pop="pop-swirl"].show {
+        -webkit-animation: pop-swirl 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+        visibility: visible;
+        z-index: 200;
+        opacity: 1;
+        }
+        #popup[data-pop="pop-swirl"].show ~ #overlay {
+        opacity: 1;
+        visibility: visible;
+        z-index: 100;
+        }
+        #popup[data-pop="anvil"] {
+        transition: all .5s ease-in-out;
+        }
+        #popup[data-pop="anvil"].show {
+        -webkit-animation: anvil 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+        visibility: visible;
+        z-index: 200;
+        opacity: 1;
+        }
+        #popup[data-pop="anvil"].show ~ #overlay {
+        opacity: 1;
+        visibility: visible;
+        z-index: 100;
+        }
+
+    }
+}

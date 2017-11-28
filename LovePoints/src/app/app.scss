@@ -1,0 +1,109 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.menubar {
+    .scroll-content {
+        background-color: #23282b;
+        color: #fff;
+        .list {
+            .item-block {
+                background-color: #23282b;
+                color: #fff;
+            }
+        }
+    }
+}
+.menubar_header {
+    background-color: #23282b;
+    color: #fff;
+    .list {
+        .item-block {
+            background-color: #23282b;
+            color: #fff;
+
+            .profile_data{
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.menu-content {
+    .tabs-md {
+         .tabbar {
+            background: rgba(255,255,255,0.3);
+        }
+    }
+}
+.fab-md {
+    background-color: #222222;
+}
+
+.focus-outline :focus {
+    outline: none;
+    outline-offset: 0px;
+}
+.tabbar {
+    opacity: 1;
+    position: fixed;
+    background: #fff;
+}
+.tabs_section {
+    padding: 0 10px;
+    min-height: 5.6rem;
+    font-weight: normal;
+    color: rgba(60, 60, 60, 0.7);
+    margin: 0;
+    text-align: center;
+    border-radius: 0;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    justify-content: center;
+    border: 0;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+
+    .icon{
+        margin-top: 1px;
+        min-width: 2.4rem;
+        font-size: 2.4rem;
+        color: rgba(60, 60, 60, 0.7);
+        transform-origin: 50% 150%;
+        display: block;
+        overflow: hidden;
+        align-self: center;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;;
+    }
+
+    &.active {
+        border-bottom: 3px solid;
+        border-color: #0095ff;
+
+        .icon {
+            color: #222222;
+        }
+    }
+}

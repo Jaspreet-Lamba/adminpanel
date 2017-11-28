@@ -1,0 +1,81 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-fab top left>
+    <button ion-fab mini menuToggle><ion-icon name="menu"></ion-icon></button>
+  </ion-fab>
+  <div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="voteUp(true)" (throwoutright)="voteUp(false)" id="card-stack">
+    <ion-card #mycards1 swing-card *ngFor="let c of cards" class="swipe_card">
+      <img *ngIf="c.picture" [src]="c.picture" (click)="onImageTap()"> 
+      <!-- <img src="c.picture.large"/> -->
+      <!-- <ion-item *ngIf="c.picture">
+        <ion-avatar item-left>
+           <img *ngIf="c.picture"[src]="c.picture.medium"> 
+          <img src="/assets/images/image.jpg">
+        </ion-avatar>
+      </ion-item> -->
+      <ion-grid class="member_name">
+        <ion-row>
+          <ion-col col-9 class="swipe_name">
+            <div>{{c.firstName}} {{c.lastName}}</div> 
+          </ion-col>
+          <ion-col col-3 class="swipe_age">
+            <div>{{c.age}}</div>     
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <div class="member_name">
+        <div class="swipe_name col-md-9">{{c.name.first}} {{c.name.last}}</div> 
+        <div class="swipe_age col-md-3">{{c.age}}</div> 
+      </div> -->
+      <div class="member_profile" *ngIf="showProfile">
+        <div class="location">
+          <ion-icon name="pin" class="title"><span> Current Location (~2.2 km away)</span></ion-icon> 
+          <div class="description">New Delhi, Delhi</div>
+        </div>
+        <div class="about_me">
+          <ion-icon name="information-circle" class="title"><span> About Me</span></ion-icon>
+          <div class="description">Hello World! This is the development phase of Love Points App. Stay tuned for more updates!</div>
+        </div>
+        <div class="languages">
+          <ion-icon name="globe" class="title"><span> Languages</span></ion-icon>
+          <div class="description">English, German, French</div>
+        </div>
+      </div>
+      <ion-fab bottom center class="dislike_button" *ngIf="!showProfile">
+        <button ion-fab mini><ion-icon name="close" (click)="voteUp(false)"></ion-icon></button>
+      </ion-fab> 
+      <ion-fab bottom center class="like_button" *ngIf="!showProfile">
+        <button ion-fab mini><ion-icon name="heart-outline" (click)="voteUp(true)"></ion-icon></button>
+      </ion-fab>
+    </ion-card>
+  </div>
+  <tab></tab>
+  <!-- <div class="tabbar">
+      <div class="tabs_section active">
+          <ion-icon name="person" (click)="openPage('HomePage')" item-start></ion-icon>
+      </div>
+      <div class="tabs_section">
+          <ion-icon name="people" (click)="openPage('ProfilePage')" item-start></ion-icon>
+      </div>
+      <div class="tabs_section">
+          <ion-icon name="chatboxes" (click)="openPage('MessagePage')" item-start></ion-icon>
+      </div>
+      <div class="tabs_section">
+          <ion-icon name="ios-card-outline" (click)="openPage('HomePage')" item-start></ion-icon>
+      </div>
+  </div>  -->
+  <!-- <ion-tabs>
+    <ion-tab tabTitle="" (click)="openPage('HomePage')" class="active" tabIcon="person"></ion-tab>
+    <ion-tab tabTitle="" (click)="openPage('ProfilePage')" tabIcon="people"></ion-tab>
+    <ion-tab tabTitle="" tabIcon="chatboxes"></ion-tab>
+	  <ion-tab tabTitle="" tabIcon="ios-card-outline"></ion-tab> 
+  </ion-tabs> -->
+</ion-content>

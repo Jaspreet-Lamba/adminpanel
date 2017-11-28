@@ -1,0 +1,17 @@
+
+<!--<button (click) = "abc()">Click me to display the search results</button>-->
+
+
+<div class="container">
+  <div class="row" *ngFor="let item of searchResults">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+        <h1>{{item.H_Name}}</h1>
+        <hr> {{item.H_Data}}
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
