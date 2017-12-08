@@ -23,6 +23,13 @@
 		background: #0e0e0e;
 		color: #fff;
 	}
+	.bar-buttons { 
+		font-size: 2em;
+		color: #fff;
+	}
+	.toolbar-title {
+		color: #fff;
+	}
 }
 .header-ios .toolbar-ios:last-child .toolbar-background-ios {
     border-width: 0 0 0px;
@@ -43,5 +50,48 @@
 	z-index: 320;
     height: 100%;
     overflow: auto;
-    padding-top: 20px;
+	padding-top: 20px;
+	
+	.user {
+		position: relative;
+		padding-left: 14px;
+		margin-bottom: 10px;
+
+		figure {
+			float: left;
+			width: 60px;
+			border-radius: 50%;
+			margin: 0em 0px;
+
+			img {
+				width: 60px;
+				height: 60px;
+				display: block;
+				border-radius: 50%;
+			}
+		}
+
+		.user-detail {
+			float: left;
+			width: calc(100% - 75px);
+			margin-left: 15px;
+
+			strong {
+				display: block;
+				font-size: 16px;
+				color: #000;
+				text-transform: capitalize;
+				margin-top: 4px;
+				padding-right: 40px;
+			}
+
+			div {
+				font-size: 16px;
+				color: #c51230;
+				margin-top: 15px;
+				text-transform: capitalize;
+				-webkit-tap-highlight-color: transparent;
+			}
+		}
+	}
 }

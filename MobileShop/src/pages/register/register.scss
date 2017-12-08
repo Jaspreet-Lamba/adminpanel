@@ -1,0 +1,19 @@
+page-register {
+	.button {
+		width: calc(50% - 2.6rem);
+		font-size: 1.6rem;
+		margin: 1.2rem 1.2rem;
+		font-weight: bold;
+	}
+	p {
+		font-size: 0.8em;
+		color: #ff0000 !important;
+	}
+	.errors .item-inner {
+		border-bottom: 0px !important;
+	}
+	.focus-outline :focus {
+		outline : none !important;
+		outline-offset: 0px !important;
+	}
+}

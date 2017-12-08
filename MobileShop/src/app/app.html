@@ -1,7 +1,22 @@
 <ion-menu [content]="content" side="right">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <div class="user clearfix">
+        <figure>
+            <img src="assets/imgs/guest-user.jpg" alt="" title="">
+        </figure>
+        <div class="user-detail">
+            <strong *ngIf="!globalFunction.isUserloggedIn">Guest User</strong>
+            <strong *ngIf="globalFunction.isUserloggedIn">Welcome, {{globalFunction.userName}}</strong>
+            <!-- <div *ngFor="let p of login" (click)="openPage(p)">login </div> -->
+        </div>
+        <!-- <div class="user-detail ng-hide" data-ng-show="$root.isLoggedIn" style="">
+            <i class="edit-icon" ui-sref="user.updateprofile" href="#/user/updateprofile"></i>
+            <strong class="text-overflow ng-binding" data-ng-bind="::viewObj.user.FirstName"></strong>
+            <span data-ng-bind="::viewObj.user.ContactTelephonePrimary" class="ng-binding"></span>
+            <span class="text-overflow ng-binding" data-ng-bind="::viewObj.user.ContactEmailPrimary"></span>
+        </div> -->
+      </div>
     </ion-toolbar>
   </ion-header>
 
@@ -10,6 +25,12 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <button *ngIf="!globalFunction.isUserloggedIn" menuClose ion-item (click)="loginUser()">
+        Login
+      </button>
+      <button *ngIf="globalFunction.isUserloggedIn" menuClose ion-item (click)="logoutUser()">
+        Logout
+      </button>
     </ion-list>
   </ion-content>
 
@@ -17,3 +38,4 @@
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+

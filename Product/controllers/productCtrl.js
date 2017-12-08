@@ -5,7 +5,7 @@ var Product = require("../models/product");
 
 exports.addProduct = function(req,res){
     Product.find({}, function (err, resp) {
-         if(err){
+        if(err){
             return res.json({
                 "error" : err
             });

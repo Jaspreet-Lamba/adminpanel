@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>LOGIN</ion-title>
+    <ion-icon name="menu" menuToggle right></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home_page">
+  <ion-list>
+    <form [formGroup]="slideOneForm">
+      <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.email.valid  && (submitAttempt)">
+          <p>Please enter a valid mail.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.password.valid  && (submitAttempt)">
+          <p>Please enter a valid password.</p>
+      </ion-item>
+    </form>
+  </ion-list>
+  <button ion-button color="primary" (click)="onLogin()">LOGIN</button>
+  <button ion-button color="primary" (click)="onRegister()">SIGN UP</button>
+</ion-content>

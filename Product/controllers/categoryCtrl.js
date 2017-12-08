@@ -2,6 +2,7 @@ var sha1 = require('sha1');
 var jwt = require('jsonwebtoken');
 var auth = require('../auth.json');
 var Category = require("../models/category");
+var Product = require("../models/product");
 
 exports.addCategory = function(req,res){
     categoryId = 3;
@@ -89,6 +90,61 @@ exports.getAllCategory = function (req, res) {
                 "data": response,
                 "length" : response.length
             })
+        }
+    });
+}
+
+exports.getAllCategoryWithProducts = function (req, res) {
+    var prod = [], cat = [];
+    var prodData = {}, catData = {};
+    Category.find({}, function (err, catResp) {
+        if(err){
+            return res.json({
+                "error" : err
+            });
+        }
+        else{
+            Product.find({}, function (err, prodResp) {
+                for(var j=0;j<catResp.length;j++){
+                    catData = {};
+                    prod = [];
+                    catData.category_id = catResp[j].category_id;
+                    catData.category_name = catResp[j].category_name;
+                    catData.status = catResp[j].status;
+                    for(var i=0;i<prodResp.length;i++) {
+                        if(catResp[j].category_name == prodResp[i].product_category) {
+                            prodData = {};
+                            prodData.product_id = prodResp[i].product_id;
+                            prodData.product_name = prodResp[i].product_name;
+                            prodData.category = prodResp[i].product_category;
+                            prodData.product_price = prodResp[i].product_price;
+                            prodData.product_splprice = prodResp[i].product_splprice;
+                            prodData.stock = prodResp[i].stock;
+                            prodData.quantity = prodResp[i].quantity;
+                            prodData.product_shortdesc = prodResp[i].product_shortdesc;
+                            prodData.product_fulldesc = prodResp[i].product_fulldesc;
+                            prodData.product_image = prodResp[i].product_image;
+                            prod.push(prodData);      
+                        }
+                    }
+                    catData.products = prod;
+                    cat.push(catData);
+                }
+                res.json({
+                    "data" : cat
+                });
+            });
+            // var token = jwt.sign({
+            //     "status": "true",
+            //     "category_id": response,
+            //     "message": "Category Found"
+            // }, auth.secret)
+            // res.json({
+            //     "success": true,
+            //     "token" : token,
+            //     "data": response,
+            //     "length" : response.length
+            // })
         }
     });
 }

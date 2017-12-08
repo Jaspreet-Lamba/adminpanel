@@ -1,4 +1,4 @@
-page-home {
+page-product {
 	.header {
 		.search, .filter, .bar-buttons {
 			font-size: 2em;
@@ -64,7 +64,7 @@ page-home {
 				    width: 68px;
 				    height: 100%;
 				    overflow: auto;
-				    padding-top: 40px;
+				    padding-top: 42px;
 				    -webkit-padding-start: 0px;
 				    list-style-type: none;
 
@@ -72,13 +72,6 @@ page-home {
 				   	    display: block;
 	    				padding: 20px 20px 20px 20px;	
 
-						&.active {
-							background: #eacf28;
-
-							.icon {
-								color: #000;
-							}
-						}
 	    				.item {
 	    					transition: all 0.5s;
 						    background-repeat: no-repeat;

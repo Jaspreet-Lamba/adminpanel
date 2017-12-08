@@ -4,7 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 import { ListPage } from '../pages/list/list';
+import { Observable } from 'rxjs/Observable';
+import { GlobalFunctionProvider } from '../providers/global-function/global-function';
+import 'rxjs/add/observable/of';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,18 +20,28 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  login: Array<{title: string, component: any}>;
+  username: String; isUserloggedIn: boolean = false;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globalFunction: GlobalFunctionProvider) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
+    this.globalFunction.getUserName();
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
     ];
-
   }
 
+  loginUser() {
+    this.nav.setRoot(LoginPage);
+  }
+
+  logoutUser() {
+    localStorage.setItem('userDetails',null);
+    // this.getUserName();
+    this.globalFunction.getUserName();
+    this.nav.setRoot(HomePage);
+  }
+  
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

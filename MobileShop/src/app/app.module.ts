@@ -4,6 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { ProductPage } from '../pages/product/product';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -11,12 +14,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { RestfullProvider } from '../providers/restfull/restfull';
 import { Urls } from '../providers/url';
+import { GlobalFunctionProvider } from '../providers/global-function/global-function';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    LoginPage,
+    RegisterPage,
+    ProductPage,
     ListPage
   ],
   imports: [
@@ -28,6 +35,9 @@ import { Urls } from '../providers/url';
   entryComponents: [
     MyApp,
     HomePage,
+    LoginPage,
+    RegisterPage,
+    ProductPage,
     ListPage
   ],
   providers: [
@@ -35,7 +45,8 @@ import { Urls } from '../providers/url';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestfullProvider,
-    Urls
+    Urls,
+    GlobalFunctionProvider
   ]
 })
 export class AppModule {}

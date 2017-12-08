@@ -10,8 +10,14 @@ var UserSchema = new Schema({
     password: {
         type: String
     },
-    role: {
+    firstName: {
         type: String
+    },
+    lastName: {
+        type: String
+    },
+    mobileNumber: {
+        type: Number
     },
     id: {
         type: Number

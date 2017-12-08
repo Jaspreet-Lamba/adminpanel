@@ -23,7 +23,3 @@ export class Urls  {
             getMessages : "http://media-consultancy.com:3000/api/chat/getmessages/"
         }
 }
-
-/*
-no screenshot available for  getConversation : "http://media-consultancy.com:3000/api/chat/:conversationId"
-*/
