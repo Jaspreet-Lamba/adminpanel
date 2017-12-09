@@ -7,6 +7,7 @@ var routes = require('./routes/index')
 var connection=mongoose.connect('mongodb://localhost:27017/product');
 var app = module.exports = express();
 
+app.use(express.static(__dirname));
 var NODE_ENV = 'development';
 //Set Variables
 app.set('env', process.env.NODE_ENV || 'production');

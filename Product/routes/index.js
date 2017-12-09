@@ -38,4 +38,10 @@ router.route('/v1/getAllCategory')
 router.route('/v1/getAllCategoryWithProducts')
 .get(categoryController.getAllCategoryWithProducts)
 
+//image routes
+router.route('/image')
+.post(productController.postImage)
+.get(productController.getImages);
+
+
 module.exports = router; // Exporting router
