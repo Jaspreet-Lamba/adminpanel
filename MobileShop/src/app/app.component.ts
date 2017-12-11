@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
+import { ProfilePage } from '../pages/profile/profile';
 import { ListPage } from '../pages/list/list';
 import { Observable } from 'rxjs/Observable';
 import { GlobalFunctionProvider } from '../providers/global-function/global-function';
@@ -33,6 +33,10 @@ export class MyApp {
 
   loginUser() {
     this.nav.setRoot(LoginPage);
+  }
+
+  userProfile() {
+    this.nav.setRoot(ProfilePage);
   }
 
   logoutUser() {

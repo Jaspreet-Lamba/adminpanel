@@ -8,21 +8,33 @@
   <div class="products_section">
     <div class="products">
       <div class="product_details">
+        <div class="product_name">{{productDetails.product_name}}</div>
         <div class="product_image">
           <img src="assets/imgs/product_default_image.png">
         </div>
         <div class="product_data">
-          <div class="product_name">Test</div>
-          <div class="product_price_cart">
-            <div class="product_price display_inline">&#8377;1000</div>
-            <!-- <div class="product_special_price display_inline">
-              &#8377;900
-            </div> -->
-            <div class="product_discount display_inline">10% OFF</div>
+          <!-- <ion-icon name="cart"></ion-icon> -->
+          <div class="product_desc">
+            <div class="desc_title" *ngIf="productDetails.shortdesc != '' || productDetails.fulldesc != ''">Product Description</div>
+            <div class="desc_short" *ngIf="productDetails.shortdesc != ''" [innerHTML]="productDetails.shortdesc"></div>
+            <div class="desc_full" *ngIf="productDetails.fulldesc != ''"  [innerHTML]="productDetails.fulldesc"></div>
           </div>
-          <div class="add_to_cart">Add to Cart</div>
+          <ion-grid class="product_table">
+            <ion-row class="row1">
+              <ion-col class="col1">Product Name</ion-col>
+              <ion-col class="col2">{{productDetails.product_name}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="col1">Availability</ion-col>
+              <ion-col class="col2">{{productDetails.stock}}</ion-col>
+            </ion-row>
+            <ion-row  class="row2">
+              <ion-col class="col1">Price</ion-col>
+              <ion-col class="col2">{{productDetails.product_price}}</ion-col>
+            </ion-row>
+          </ion-grid>
+          <button ion-button>Add to Cart</button>
         </div>
-        <img src="assets/imgs/footer_line.png">
       </div>
     </div>
   </div>

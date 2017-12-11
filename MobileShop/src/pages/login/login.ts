@@ -51,7 +51,7 @@ export class LoginPage {
   onLoginSuccess(res){
     if(res.status == "false") {
       let alert = this.alertCtrl.create({
-        title: 'MobileShop',
+        title: this.rest.appName,
         subTitle: res.message,
         buttons: ['OK']
       });
@@ -66,7 +66,7 @@ export class LoginPage {
   
   onLoginError(res){
     let alert = this.alertCtrl.create({
-      title: 'MobileShop',
+      title: this.rest.appName,
       subTitle: res.message,
       buttons: ['OK']
     });

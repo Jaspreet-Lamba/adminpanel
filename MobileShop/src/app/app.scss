@@ -23,11 +23,18 @@
 		background: #0e0e0e;
 		color: #fff;
 	}
-	.bar-buttons { 
+	.back-button { 
+		font-size: 1em;
+		color: #fff;
+	}
+	.bar-buttons{ 
 		font-size: 2em;
 		color: #fff;
 	}
 	.toolbar-title {
+		color: #fff;
+	}
+	.bar-button-default-md:hover:not(.disable-hover), .bar-button-clear-md-default:hover:not(.disable-hover), .bar-button-md-default:hover:not(.disable-hover) {
 		color: #fff;
 	}
 }

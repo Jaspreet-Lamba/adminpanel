@@ -14,11 +14,15 @@ export class RestfullProvider {
   public userApiUrl = {
       login : this.BaseUrl + "login",
       register: this.BaseUrl + "register",
+      updateUserProfile: this.BaseUrl + "updateUserProfile",
   }
   public dataApiUrl = {
       getAllCategory : this.BaseUrl + "getAllCategory",
       getAllCategoryWithProducts : this.BaseUrl + "getAllCategoryWithProducts",
+      getProduct : this.BaseUrl + "getProduct",
   }
+
+  public appName = "Mobile Shop";
   
   // Urls = {
   //   getAllProducts : this.BaseUrl + "getAllProducts",
@@ -44,6 +48,13 @@ export class RestfullProvider {
   getAllCategory() :Observable<any>{
     return this.http.get(this.dataApiUrl.getAllCategory).map(data=>data = data.json());
   }
+
+  getProduct(productData): Observable < any > {
+    var product = {
+      "productid": productData
+    };
+    return this.http.post(this.dataApiUrl.getProduct, product, this.options).map((res: Response) => res.json());
+  }
   
   Login(userLoginObj): Observable < any > {
     var Form = {
@@ -62,6 +73,18 @@ export class RestfullProvider {
       "mobile": userRegisterObj.mobile,
     };
     return this.http.post(this.userApiUrl.register, Form, this.options).map((res: Response) => res.json());
+  }
+
+  updateUserProfile(userRegisterObj): Observable < any > {
+    var Form = {
+      "id": userRegisterObj.id,
+      "firstname": userRegisterObj.firstname,
+      "lastname": userRegisterObj.lastname,
+      "email": userRegisterObj.email,
+      "password": userRegisterObj.password,
+      "mobile": userRegisterObj.mobile,
+    };
+    return this.http.post(this.userApiUrl.updateUserProfile, Form, this.options).map((res: Response) => res.json());
   }
 
   // addUser(userObj): Observable < any > {

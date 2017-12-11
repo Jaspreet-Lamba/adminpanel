@@ -5,7 +5,6 @@ var User = require("../models/users");
 
 
 exports.registerUser = function(req,res){
-    
     User.find({}, function (err, resp) {
         if(err){
             return res.json({
@@ -86,6 +85,37 @@ exports.login = function(req,res){
     });
 
 }
+
+exports.updateUserProfile = function(req,res){
+    User.findOne({
+        id: req.body.id
+    }, function (err, userResp) {
+        if (err) {
+            res.json(err);
+        }
+        userResp.email = req.body.email;
+        userResp.password = req.body.password;
+        userResp.firstName = req.body.firstname;
+        userResp.lastName = req.body.lastname;
+        userResp.mobileNumber = req.body.mobile;
+        userResp.id = req.body.id;
+        
+        userResp.save(function (err, response) {
+            if(err){
+                return res.json({
+                    "success" : "false", 
+                    "response" : res, 
+                    "message" : "Oops something went wrong. Please try again!"
+                });
+            } else{
+                res.json({
+                    "success": "true",
+                    "data": response
+                })
+            }
+        })
+    })
+ }
 
 
 

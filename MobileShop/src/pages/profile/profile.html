@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>EDIT PROFILE</ion-title>
+    <ion-icon name="menu" menuToggle right></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home_page">
+  <ion-list>
+    <form [formGroup]="slideOneForm">
+      <ion-item>
+          <ion-label floating>Firstname</ion-label>
+          <ion-input formControlName="firstname" type="text" [class.invalid]="!slideOneForm.controls.firstname.valid && (submitAttempt)"></ion-input>
+          <ion-input formControlName="id" type="text" [hidden]="true"></ion-input>
+        </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.firstname.valid  && (submitAttempt)">
+          <p>Please enter a valid firstname.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Lastname</ion-label>
+          <ion-input formControlName="lastname" type="text" [class.invalid]="!slideOneForm.controls.lastname.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.lastname.valid  && (submitAttempt)">
+          <p>Please enter a valid lastname.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Mobile Number</ion-label>
+          <ion-input formControlName="mobile" type="text" [class.invalid]="!slideOneForm.controls.mobile.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.mobile.valid  && (submitAttempt)">
+          <p>Please enter a valid mobile number.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)" [readonly]="true"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.email.valid  && (submitAttempt)">
+          <p>Please enter a valid mail.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input formControlName="password" type="text" [class.invalid]="!slideOneForm.controls.password.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.password.valid  && (submitAttempt)">
+          <p>Please enter a valid password.</p>
+      </ion-item>
+    </form>
+  </ion-list>
+  <button ion-button color="primary" (click)="navigateToHome()">CANCEL</button>
+  <button ion-button color="primary" (click)="onProfileUpdate()">UPDATE</button>
+</ion-content>

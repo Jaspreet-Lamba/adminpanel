@@ -2,56 +2,6 @@ var sha1 = require('sha1');
 var jwt = require('jsonwebtoken');
 var auth = require('../auth.json');
 var Product = require("../models/product");
-var Image = require('../models/image');
-var base64Img = require('base64-img');
-var fs = require('fs');
-
-//image code starts
-
-var path = "";
-
-exports.postImage = function (req, res) {
-    var image = new Image({
-        name: req.body.name,
-       path:"/images/"+req.body.name
-    });
-    var imageDecode = Buffer.from(req.body.base64textString, 'base64');
-    fs.writeFile(path+image.name, imageDecode, function(err) {}); 
-    image.save(function (error, response) {
-        if (error) {
-            res.json({
-                "success": false,
-                "error": error
-            })
-           
-        }
-        else {
-            res.json({
-                "success": true,
-                "body": response
-            })
-          
-        }
-    });
-}
-exports.getImages = function (req, res) {
-    Image.find({}, function (err, response) {
-        
-       
-        if (err) {
-            res.json({
-                "success": false,
-                "error": err
-            })
-        }
-        for( var i = 0 ; i < response.length; i++){
-            response[i].path = "http://localhost:2000" + response[i].path
-        }
-       res.json(response);
-    })
-}
-
-//image code ends
 
 exports.addProduct = function(req,res){
     Product.find({}, function (err, resp) {
@@ -186,10 +136,10 @@ exports.updateProduct = function(req,res){
  exports.getProduct = function (req, res) {
 
     var product_id = req.body.productid;
-    Product.findOne({ productid: product_id }, function (error, response) {
+    Product.findOne({ product_id: product_id }, function (err, response) {
          if(err){
             return res.json({
-                "error" : error
+                "error" : err
             });
         }
         else{
@@ -201,9 +151,8 @@ exports.updateProduct = function(req,res){
                 }, auth.secret)
                 res.json({
                     "success": true,
-                    "message" : "Product Found",
                     "token" : token,
-                    "body": response
+                    "data": response
                 })
             }
             else{
@@ -213,10 +162,9 @@ exports.updateProduct = function(req,res){
                     "message": "product Not Found"
                 }, auth.secret)
                 res.json({
-                    "success": true,
-                    "message" : "Product Not Found",
+                    "success": false,
                     "Token" : token,
-                    "body": response
+                    "data": response
                 })
             }
         }

@@ -192,7 +192,7 @@ page-home {
 					.btn-group {
 					    
 					    .btn {
-						    background: #c51230;
+						    background: #b5102d;
 						    text-transform: uppercase;
 						    color: #fff;
 						    display: inline-block;
@@ -216,8 +216,8 @@ page-home {
 						    white-space: nowrap;
 							
 							&.active-btn {
-							    color: #c51230;
-							    border: 1px solid #c51230;
+							    color: #b5102d;
+							    border: 1px solid #b5102d;
 							    background: none;
 							}
 						}
@@ -234,7 +234,7 @@ page-home {
 
 				.products {
 					overflow: hidden;
-					padding: 10px 0px;
+					padding: 10px 0px 20px 0px;
 					// display: inline-block;
 					.product_details {
 						overflow: hidden;
@@ -263,7 +263,7 @@ page-home {
 							bottom: 6px;
 						}
 						.product_name {
-							font-size: 23px;
+							font-size: 20px;
 							padding: 5px 10px 10px 10px;
 							text-align: center;
 						}
@@ -275,17 +275,29 @@ page-home {
 					.add_to_cart {
 						padding: 10px 20px;
 						color: white;
-						background-color: #ff0000;
+						background-color: #b5102d;
 						font-size: 17px;
 						font-weight: bold;
 						text-align: center;
 						border-radius: 20px;
 						float: right;
 						margin: 0px auto;
+
+						&.disable {
+							pointer-events: none;
+							opacity: 0.6;
+						}
 					}
 					.footer_line {
 						padding-top: 10px;
 					}
+				}
+				.no_products {
+					font-size: 22px;
+					font-weight: bold;
+					margin-top: 100px;
+					text-align: center;
+					line-height: 40px;
 				}
 			}
 		}

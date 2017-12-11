@@ -121,8 +121,9 @@ exports.getAllCategoryWithProducts = function (req, res) {
                             prodData.product_splprice = prodResp[i].product_splprice;
                             prodData.stock = prodResp[i].stock;
                             prodData.quantity = prodResp[i].quantity;
-                            prodData.product_shortdesc = prodResp[i].product_shortdesc;
-                            prodData.product_fulldesc = prodResp[i].product_fulldesc;
+                            prodData.available = prodResp[i].stock=='In Stock' && prodResp[i].quantity>0 ? 'true' : 'false';
+                            // prodData.product_shortdesc = prodResp[i].product_shortdesc;
+                            // prodData.product_fulldesc = prodResp[i].product_fulldesc;
                             prodData.product_image = prodResp[i].product_image;
                             prod.push(prodData);      
                         }

@@ -11,6 +11,9 @@ router.route('/v1/login')
 router.route('/v1/register')
 .post(userController.registerUser)
 
+router.route('/v1/updateUserProfile')
+.post(userController.updateUserProfile)
+
 //product apis
 router.route('/v1/addProduct')
 .post(productController.addProduct)
@@ -23,6 +26,9 @@ router.route('/v1/deleteProduct')
 
 router.route('/v1/getAllProducts')
 .get(productController.getAllProducts)
+
+router.route('/v1/getProduct')
+.post(productController.getProduct)
 
 
 //category apis
@@ -37,11 +43,5 @@ router.route('/v1/getAllCategory')
 
 router.route('/v1/getAllCategoryWithProducts')
 .get(categoryController.getAllCategoryWithProducts)
-
-//image routes
-router.route('/image')
-.post(productController.postImage)
-.get(productController.getImages);
-
 
 module.exports = router; // Exporting router

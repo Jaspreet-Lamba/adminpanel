@@ -7,7 +7,6 @@ var routes = require('./routes/index')
 var connection=mongoose.connect('mongodb://localhost:27017/product');
 var app = module.exports = express();
 
-app.use(express.static(__dirname));
 var NODE_ENV = 'development';
 //Set Variables
 app.set('env', process.env.NODE_ENV || 'production');
@@ -21,7 +20,8 @@ app.use(bodyParser.json());
 app.use(jwt({ secret: auth.secret}).unless({path: [
 	'/api/v1/checkuser', 
 	'/api/v1/addProduct','/api/v1/updateProduct', '/api/v1/deleteProduct', '/api/v1/getAllProducts', 
-	'/api/v1/addCategory', '/api/v1/updateCategory', '/api/v1/getAllCategory', '/api/v1/login', '/api/v1/register', '/api/v1/getAllCategoryWithProducts']}))
+	'/api/v1/addCategory', '/api/v1/updateCategory', '/api/v1/getAllCategory', '/api/v1/login', '/api/v1/register', '/api/v1/getAllCategoryWithProducts', '/api/v1/getProduct', 
+	'/api/v1/updateUserProfile']}))
 app.use('/api', routes);
 
 

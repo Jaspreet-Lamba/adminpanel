@@ -22,15 +22,10 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-      <button *ngIf="!globalFunction.isUserloggedIn" menuClose ion-item (click)="loginUser()">
-        Login
-      </button>
-      <button *ngIf="globalFunction.isUserloggedIn" menuClose ion-item (click)="logoutUser()">
-        Logout
-      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}</button>
+      <button *ngIf="!globalFunction.isUserloggedIn" menuClose ion-item (click)="loginUser()">Login</button>
+      <button *ngIf="globalFunction.isUserloggedIn" menuClose ion-item (click)="userProfile()">My Profile</button>
+      <button *ngIf="globalFunction.isUserloggedIn" menuClose ion-item (click)="logoutUser()">Logout</button>
     </ion-list>
   </ion-content>
 

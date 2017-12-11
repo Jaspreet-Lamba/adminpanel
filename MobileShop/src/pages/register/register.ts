@@ -56,7 +56,7 @@ export class RegisterPage {
     //console.log(res);
     if(res.success == "false") {
       let alert = this.alertCtrl.create({
-        title: 'MobileShop',
+        title: this.rest.appName,
         subTitle: res.message,
         buttons: ['OK']
       });
@@ -71,7 +71,7 @@ export class RegisterPage {
   
   onRegisterError(res){
     let alert = this.alertCtrl.create({
-      title: 'MobileShop',
+      title: this.rest.appName,
       subTitle: res.message,
       buttons: ['OK']
     });
