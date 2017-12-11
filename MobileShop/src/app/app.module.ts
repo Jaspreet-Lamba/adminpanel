@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProductPage } from '../pages/product/product';
 import { ProfilePage } from '../pages/profile/profile';
+import { AddressPage } from '../pages/address/address';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,6 +27,7 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     RegisterPage,
     ProductPage,
     ProfilePage,
+    AddressPage,
     ListPage
   ],
   imports: [
@@ -41,6 +43,7 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     RegisterPage,
     ProductPage,
     ProfilePage,
+    AddressPage,
     ListPage
   ],
   providers: [
