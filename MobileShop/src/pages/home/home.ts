@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { App, NavController, LoadingController, AlertController } from 'ionic-angular';
+import { App, NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { RestfullProvider } from '../../providers/restfull/restfull';
 import { Http } from '@angular/http';
 import { ProductPage } from '../product/product';
+import { CartPage } from '../cart/cart';
+import { GlobalFunctionProvider } from '../../providers/global-function/global-function';
 
 @Component({
   selector: 'page-home',
@@ -17,15 +19,18 @@ export class HomePage implements OnInit {
   activeCategoryId = 0;
   categoryArray = [];
   productArray = {};
+  cartCount;
+  cartItem: Object = {};
 
-  constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, 
-    private alertCtrl: AlertController) {
-  	console.log("home page");
+  constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public globalFunction: GlobalFunctionProvider, public toastCtrl: ToastController) {
+  	//console.log("home page");
+    this.globalFunction.getCartCount();
   }
   
   ngOnInit() {
     // this.loader.present();
     //this.activeCategoryId = 0;
+    this.cartCount = this.globalFunction.cartCount;
     var categData = JSON.parse(localStorage.getItem('categoryData'));
     if(categData) {
       this.setAllCategories(categData);  
@@ -37,7 +42,7 @@ export class HomePage implements OnInit {
   }
 
   setAllCategories(res){
-    console.log(res);
+    //console.log(res);
     let category;
     this.categoryArray = [];
     for(var i=0;i<res.data.length;i++){
@@ -129,6 +134,50 @@ export class HomePage implements OnInit {
         if(prodData.data[i].category_id == this.activeCategoryId)
           this.productArray = prodData.data[i].products; 
     }
-    console.log(this.productArray);
+    //console.log(this.productArray);
+  }
+
+  backtoHome() {
+    this.cartItem = {};
+  }
+
+  checkout() {
+    if(this.globalFunction.cartCount > 0) {
+      this.backtoHome();
+      this.navCtrl.push(CartPage);
+    }
+    else {
+      let toast = this.toastCtrl.create({
+        message: 'Cart is empty. Please add some items.',
+        duration: 3000
+      });
+      toast.present();
+    }
+  }
+
+  addToCart(product) {
+    var cartObj = {}, dummy = [], duplicate = {}, localCart;
+    cartObj.productId = product.product_id;
+    cartObj.productName = product.product_name;
+    cartObj.productPrice = product.product_price;
+    cartObj.productSplPrice = product.product_splprice;
+    cartObj.productImage = product.product_image;
+    cartObj.productQuantity = 1;
+    
+    this.cartItem.productName = product.product_name;
+    this.cartItem.productPrice = product.product_price;
+    this.cartItem.show = true;
+
+    localCart = JSON.parse(localStorage.getItem('cartDetails'));
+    this.globalFunction.setCartCount(1);
+    this.cartCount = this.globalFunction.cartCount;
+    if(localCart != null && localCart != '') {
+      localCart.forEach(function(cart) {
+        dummy.push(cart);
+      });
+    } 
+    dummy.push(cartObj);
+    duplicate = dummy;
+    localStorage.setItem('cartDetails',JSON.stringify(duplicate));
   }
 }

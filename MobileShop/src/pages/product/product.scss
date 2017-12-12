@@ -76,6 +76,11 @@ page-product {
 								width: 100%;
 								background-color: #b5102d;
 								// margin-bottom: 20px;
+
+								&.disable {
+									pointer-events: none;
+									opacity: 0.6;
+								}
 							}
 						}
 					}

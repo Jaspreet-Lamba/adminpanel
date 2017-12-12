@@ -2,6 +2,7 @@ var sha1 = require('sha1');
 var jwt = require('jsonwebtoken');
 var auth = require('../auth.json');
 var User = require("../models/users");
+var Address = require("../models/address");
 
 
 exports.registerUser = function(req,res){
@@ -83,7 +84,6 @@ exports.login = function(req,res){
             })
         }
     });
-
 }
 
 exports.updateUserProfile = function(req,res){
@@ -114,8 +114,80 @@ exports.updateUserProfile = function(req,res){
                 })
             }
         })
-    })
- }
+    });
+}
+
+exports.addAddress = function(req,res){
+    Address.find({}, function (err, addressResp) {
+        if (err) {
+            res.json(err);
+        }
+        var address = new Address({  
+            id: addressResp ? addressResp[addressResp.length-1].id + 1 : 1,
+            userId: req.body.userId,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            mobile: req.body.mobile,
+            email: req.body.email,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            pincode: req.body.pincode,
+        });
+        
+        address.save(function (err, response) {
+            if(err){
+                return res.json({
+                    "success" : "false", 
+                    "response" : res, 
+                    "message" : "Oops something went wrong. Please try again!"
+                });
+            } else{
+                res.json({
+                    "success": "true",
+                    "data": response
+                })
+            }
+        })
+    });
+}
+
+exports.getAddresses = function (req, res) {
+    Address.find({ userId: req.body.userId }, function (err, response) {
+         if(err){
+            return res.json({
+                "error" : err
+            });
+        }
+        else{
+            if(response != null || response != undefined ){
+                var token = jwt.sign({
+                    "status": "true",
+                    "product_id": response.userId,
+                    "message": "product Found"
+                }, auth.secret)
+                res.json({
+                    "success": "true",
+                    "token" : token,
+                    "data": response,
+                    "length":response.length
+                })
+            } else{
+                var token = jwt.sign({
+                    "status": "false",
+                    "user_id": response,
+                    "message": "No Address Found"
+                }, auth.secret)
+                res.json({
+                    "success": "false",
+                    "Token" : token,
+                    "data": response,
+                })
+            }
+        }
+    });
+}
 
 
 

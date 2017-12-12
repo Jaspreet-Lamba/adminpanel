@@ -5,7 +5,7 @@ var Category = require("../models/category");
 var Product = require("../models/product");
 
 exports.addCategory = function(req,res){
-    categoryId = 3;
+    categoryId = 4;
     
     var category = new Category({ 
 	    category_id : categoryId,

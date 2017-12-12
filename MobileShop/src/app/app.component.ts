@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { AddressPage } from '../pages/address/address';
-import { ListPage } from '../pages/list/list';
+import { CartPage } from '../pages/cart/cart';
 import { Observable } from 'rxjs/Observable';
 import { GlobalFunctionProvider } from '../providers/global-function/global-function';
 import 'rxjs/add/observable/of';
@@ -28,7 +28,6 @@ export class MyApp {
     this.globalFunction.getUserName();
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
     ];
   }
 
@@ -45,7 +44,8 @@ export class MyApp {
 
   logoutUser() {
     localStorage.setItem('userDetails',null);
-    // this.getUserName();
+    localStorage.setItem('userAddresses',null);
+    localStorage.setItem('deliveryAddress',null);
     this.globalFunction.getUserName();
     this.nav.setRoot(HomePage);
   }

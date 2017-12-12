@@ -1,23 +1,119 @@
 page-address {
-	.button {
-		width: calc(50% - 2.6rem);
-		font-size: 1.6rem;
-		margin: 1.2rem 1.2rem;
-		font-weight: bold;
-		background-color: #232222;
-	}
-	.button.activated {
-		background-color: #232222;
-	}
-	p {
-		font-size: 0.8em;
-		color: #ff0000 !important;
-	}
-	.errors .item-inner {
-		border-bottom: 0px !important;
-	}
-	.focus-outline :focus {
-		outline : none !important;
-		outline-offset: 0px !important;
+	.address_page {
+		background-color: #f5f5f5;
+
+		.sub-page {
+		    padding: 25px 15px 70px;
+
+		    .address-header {
+		    	padding-bottom: 20px;
+		    	font-size: 16px;
+			    color: #333333;
+			    font-weight: 500;
+			    text-transform: uppercase;
+		    }
+
+			ul {
+			    list-style: none;
+			    padding: 0px;
+
+			    .address-data:last-child div {
+    				border: 0px;
+			    }
+
+			    .address-data {
+				    position: relative;
+				    padding: 0 0 0 50px;
+				    border-left: 4px solid transparent;
+					
+					.icon {
+					    position: absolute;
+					    top: 0px;
+					    right: 0px;
+					    font-size: 25px;
+						
+						&.delete-icon{
+						    right: 35px;
+						    top: 0px;
+						}
+					}
+
+					&.active {
+					    border-color: #00a634;
+    					font-weight: bold;
+
+    					.delete-icon {
+    						color: #c51230;
+    					}
+
+    					.edit-icon {
+    						color: #00a634;
+    					}
+
+    					.user_data strong {
+						    color: #00a634;
+						}
+					}
+					
+					.user_data {
+					    border-bottom: 1px dotted;
+					    margin-bottom: 15px;
+
+					    .icon {
+						    position: absolute;
+						    top: 3px;
+						    left: 16px;
+						}
+
+						strong {
+						    color: #c51230;
+						    display: block;
+						    font-size: 20px;
+						    width: 85%;
+						}
+
+						.text-overflow {
+						    text-overflow: ellipsis;
+						    overflow: hidden;
+						    white-space: nowrap;
+						    padding-right: 7px;
+						}
+
+						p {
+						    color: #575757;
+						    margin-top: 15px;
+						    width: calc(100% - 43px);
+						    font-size: 15px;
+						    color: #333333;
+						    margin-bottom: 24px;
+						    font-weight: 500;
+						    line-height: 1.2;
+
+						    span {
+							    display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.add-new {
+		    padding-left: 54px;
+
+		    a {
+			    color: #c51230;
+			    font-size: 20px;
+			    font-weight: 500;
+			}
+		}
+		.button {
+			margin: 40px 0px 20px 0px;
+			background-color: #c51230;
+			color: #fff;
+			font-weight: 500;
+			font-size: 18px;
+			padding: 20px 0px;
+		}
 	}
 }

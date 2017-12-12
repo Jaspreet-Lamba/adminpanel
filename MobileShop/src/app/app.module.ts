@@ -9,7 +9,8 @@ import { RegisterPage } from '../pages/register/register';
 import { ProductPage } from '../pages/product/product';
 import { ProfilePage } from '../pages/profile/profile';
 import { AddressPage } from '../pages/address/address';
-import { ListPage } from '../pages/list/list';
+import { AddAddressPage } from '../pages/addaddress/addaddress';
+import { CartPage } from '../pages/cart/cart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +29,8 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     ProductPage,
     ProfilePage,
     AddressPage,
-    ListPage
+    AddAddressPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     ProductPage,
     ProfilePage,
     AddressPage,
-    ListPage
+    AddAddressPage,
+    CartPage
   ],
   providers: [
     StatusBar,

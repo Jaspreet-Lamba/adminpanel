@@ -15,12 +15,16 @@ export class GlobalFunctionProvider {
 
   public isUserloggedIn: boolean = false;
   public userName: string;
-  
-  constructor(public zone: NgZone) {}
+  public userDetails;
+  public cartCount = 0;
+  constructor(public zone: NgZone) {
+    this.clearCartCount();
+  }
 
   checkUserName(): Observable <any> {
     let userName = JSON.parse(localStorage.getItem('userDetails'));
     if(userName) {
+      this.userDetails = userName;
       var name = userName.firstName + " " + userName.lastName;
       return Observable.of(name);
     }
@@ -41,5 +45,26 @@ export class GlobalFunctionProvider {
 
   setUserName(data) {
     this.userName = data;
+  }
+
+  getUserAddresses() {
+    return JSON.parse(localStorage.getItem('userAddresses'));
+  }
+
+  setUserAddresses(data) {
+    localStorage.setItem('userAddresses',JSON.stringify(data));
+  }
+
+  getCartCount() {
+    return this.cartCount;
+  }
+
+  clearCartCount() {
+    this.cartCount = 0;
+    localStorage.setItem('cartDetails',null);
+  }
+
+  setCartCount(count) {
+    this.cartCount += count;
   }
 }

@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ADD NEW ADDRESSES</ion-title>
+    <!-- <ion-icon name="menu" menuToggle right></ion-icon> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="addaddress_page">
+  <ion-list>
+    <form [formGroup]="slideOneForm">
+      <ion-item>
+          <ion-label floating>Firstname</ion-label>
+          <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (submitAttempt)"></ion-input>
+          <ion-input formControlName="id" type="text" [hidden]="true"></ion-input>
+          <ion-input formControlName="userId" type="text" [hidden]="true"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.firstName.valid  && (submitAttempt)">
+          <p>Please enter a valid firstname.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Lastname</ion-label>
+          <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.lastName.valid  && (submitAttempt)">
+          <p>Please enter a valid lastname.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Mobile Number</ion-label>
+          <ion-input formControlName="mobile" type="text" [class.invalid]="!slideOneForm.controls.mobile.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.mobile.valid  && (submitAttempt)">
+          <p>Please enter a valid mobile number.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.email.valid  && (submitAttempt)">
+          <p>Please enter a valid mail.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Address</ion-label>
+          <ion-input formControlName="address" type="text" [class.invalid]="!slideOneForm.controls.address.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.address.valid  && (submitAttempt)">
+          <p>Please enter a valid address.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input formControlName="city" type="text" [class.invalid]="!slideOneForm.controls.city.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.city.valid  && (submitAttempt)">
+          <p>Please enter a valid city.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-input formControlName="state" type="text" [class.invalid]="!slideOneForm.controls.state.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.state.valid  && (submitAttempt)">
+          <p>Please enter a valid state.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Country</ion-label>
+          <ion-input formControlName="country" type="text" [class.invalid]="!slideOneForm.controls.country.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.country.valid  && (submitAttempt)">
+          <p>Please enter a valid country.</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Pin Code</ion-label>
+          <ion-input formControlName="pincode" type="number" [class.invalid]="!slideOneForm.controls.pincode.valid && (submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item class="errors" *ngIf="!slideOneForm.controls.pincode.valid  && (submitAttempt)">
+          <p>Please enter a valid pincode.</p>
+      </ion-item>
+    </form>
+  </ion-list>
+  <button ion-button (click)="onCancel()">CANCEL</button>
+  <button ion-button (click)="onAddAddress()">ADD</button>
+</ion-content>

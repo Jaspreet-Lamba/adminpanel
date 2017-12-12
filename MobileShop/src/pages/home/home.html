@@ -10,6 +10,7 @@
       </div>
     </div>
   </ion-navbar>
+  <div class="overlay" *ngIf="cartItem.show==true"></div>
 </ion-header>
 
 <ion-content class="home_page">
@@ -22,26 +23,26 @@
       </li>
     </ul>
   </aside>
-  <!-- <div class="cart">
-    <div data-ng-click="checkValue()">
-        <span class="cart-total-item" data-ng-bind="$root.cartCount">0</span>
+  <div class="cart">
+    <div (click)="checkout()">
+        <span class="cart-total-item">{{cartCount}}</span>
         <ion-icon class="cart-icon" name="md-cart"></ion-icon>
     </div>
 
-    <div class="cart-item-detail" data-ng-show="viewObject.showProductInfoPopUp" data-ng-class="{'kfc-transition':viewObject.showProductInfoPopUp ,'':!viewObject.showProductInfoPopUp} ">
+    <div class="cart-item-detail kfc-transition" *ngIf="cartItem.show==true">
         <div class="clearfix cart-product">
-            <strong class="item-name"> Added</strong>
+            <strong class="item-name">{{cartItem.productName}} Added</strong>
             <span class="item-price">
-                <sup><small class="webRupee">rs</small></sup>
-                100
+                <sup>&#8377;<small class="webRupee"></small></sup>
+                {{cartItem.productPrice}}
             </span>
         </div>
         <div class="btn-group">
-            <button class="btn" data-ng-click="backtoHome($event)">Back to menu</button>
-            <button class="btn active-btn" data-ng-click="checkout()">Checkout</button>
+            <button class="btn" (click)="backtoHome()">Back to menu</button>
+            <button class="btn active-btn" (click)="checkout()">Checkout</button>
         </div>
     </div>
-  </div> -->
+  </div>
   <div class="products_section">
     <div class="no_products" *ngIf="productArray.length==0">Sorry! <br>No Products Found.</div> 
     <div class="products" *ngFor="let product of productArray; let i = index">
@@ -58,10 +59,11 @@
             </div> -->
             <div class="product_discount display_inline">&#8377;{{product.product_splprice}} OFF</div>
           </div>
-          <div class="add_to_cart" [ngClass]="(product.available=='false')?'disable':''">{{product.available=='false'?'Out of Stock':'Add to Cart'}}</div>
+          <div class="add_to_cart" (click)="addToCart(product)" [ngClass]="(product.available=='false')?'disable':''">{{product.available=='false'?'Out of Stock':'Add to Cart'}}</div>
         </div>
         <img src="assets/imgs/footer_line.png">
       </div>
     </div>
   </div>
+  <div class="overlay" *ngIf="cartItem.show==true"></div>
 </ion-content>

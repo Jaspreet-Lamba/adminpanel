@@ -14,6 +14,12 @@ router.route('/v1/register')
 router.route('/v1/updateUserProfile')
 .post(userController.updateUserProfile)
 
+router.route('/v1/addAddress')
+.post(userController.addAddress)
+
+router.route('/v1/getAddresses')
+.post(userController.getAddresses)
+
 //product apis
 router.route('/v1/addProduct')
 .post(productController.addProduct)

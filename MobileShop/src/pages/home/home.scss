@@ -40,6 +40,16 @@ page-home {
 			    }
 			}
 		}
+		.overlay {
+		    background: rgba(0,0,0,0.8);
+		    z-index: 98;
+		    height: 100%;
+		    width: 100%;
+		    position: fixed;
+		    top: 0px;
+		    left: 0px;
+		    height: 54px;
+		}
 	}
 	.content {
 		.scroll-content {
@@ -98,7 +108,7 @@ page-home {
 			    position: fixed;
 			    right: 10px;
 			    top: 97px;
-			    z-index: 30;
+			    z-index: 100;
 
 			    .cart-total-item {
 				    color: #000;
@@ -111,8 +121,8 @@ page-home {
 				    font-size: 10px;
 				    line-height: 18px;
 				    float: right;
-				    font-family: 'montserratblack';
 				    position: absolute;
+				    font-weight: bold;
 				    right: 0px;
 				}
 
@@ -138,12 +148,12 @@ page-home {
 				}
 
 				.cart-item-detail {
-				    background: #fff url(../assets/imgs/background.jpg) no-repeat left top/cover;
+				    background-color: #ececec;
 				    padding: 14px;
 				    text-align: left;
 				    position: absolute;
 				    max-width: 328px;
-				    width: calc(100vw - 100px);
+				    width: calc(100vw - 50px);
 				    z-index: 300;
 				    right: 5px;
 				    top: 65px;
@@ -157,7 +167,6 @@ page-home {
 					    .item-name {
 						    color: #00a634;
 						    font-size: 15px;
-						    font-family: "a_love_of_thunderregular";
 						    float: left;
 						    width: 72%;
 						    padding-right: 10px;
@@ -168,16 +177,16 @@ page-home {
 						.item-price {
 						    color: #000;
 						    font-size: 20px;
-						    font-family: "a_love_of_thunderregular";
 						    float: left;
 						    width: 28%;
 						    text-align: right;
 						    padding-right: 10px;
 
 						    sup {
-							    font-size: 50%;
+							    font-size: 80%;
 							    vertical-align: top;
 							    display: inline-block;
+							    top: 10px;
 
 							    .webRupee {
 								    font-family: "WebRupee";
@@ -193,12 +202,12 @@ page-home {
 					    
 					    .btn {
 						    background: #b5102d;
+						    font-weight: bold;
 						    text-transform: uppercase;
 						    color: #fff;
 						    display: inline-block;
 						    border-radius: 20px;
 						    text-decoration: none;
-						    font-family: "montserratregular";
 						    font-size: 14px;
 						    padding: 16px 21px;
 						    position: relative;
@@ -270,10 +279,10 @@ page-home {
 					}
 					.product_price_cart {
 						float: left;
-						margin: 10px 0px;
+						margin: 10px 10px 10px 0px;
 					}
 					.add_to_cart {
-						padding: 10px 20px;
+						padding: 10px 15px;
 						color: white;
 						background-color: #b5102d;
 						font-size: 17px;
@@ -300,6 +309,15 @@ page-home {
 					line-height: 40px;
 				}
 			}
+		}
+		.overlay {
+		    background: rgba(0,0,0,0.8);
+		    z-index: 98;
+		    height: 100%;
+		    width: 100%;
+		    position: fixed;
+		    top: 0px;
+		    left: 0px;
 		}
 	}
 }

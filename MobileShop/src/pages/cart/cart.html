@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle right>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CART</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let product of cartDetails;">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/product_default_image.png">
+      </ion-thumbnail>
+      <div class="product_details">
+        <h2>{{product.productName}}</h2>
+        <p>{{product.productQuantity}}</p>
+      </div>
+      <div class="product_action">
+        <ion-icon class="delete-icon" name="ios-trash-outline"></ion-icon>
+        <p class="product-price">&#8377;{{product.productPrice}}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

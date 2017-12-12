@@ -15,6 +15,8 @@ export class RestfullProvider {
       login : this.BaseUrl + "login",
       register: this.BaseUrl + "register",
       updateUserProfile: this.BaseUrl + "updateUserProfile",
+      addAddress: this.BaseUrl + "addAddress",
+      getAddresses: this.BaseUrl + "getAddresses",
   }
   public dataApiUrl = {
       getAllCategory : this.BaseUrl + "getAllCategory",
@@ -86,6 +88,15 @@ export class RestfullProvider {
     };
     return this.http.post(this.userApiUrl.updateUserProfile, Form, this.options).map((res: Response) => res.json());
   }
+  
+  addAddress(userRegisterObj): Observable < any > {
+    return this.http.post(this.userApiUrl.addAddress, userRegisterObj, this.options).map((res: Response) => res.json());
+  }
+
+  getAddresses(addressData): Observable < any > {
+    return this.http.post(this.userApiUrl.getAddresses, addressData, this.options).map((res: Response) => res.json());
+  }
+
 
   // addUser(userObj): Observable < any > {
   //   let headers = new Headers({

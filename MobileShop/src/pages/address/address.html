@@ -1,60 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>EDIT PROFILE</ion-title>
+    <ion-title>MY ADDRESSES</ion-title>
     <ion-icon name="menu" menuToggle right></ion-icon>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="home_page">
-  <ion-list>
-    <!-- <form [formGroup]="slideOneForm">
-      <ion-item>
-          <ion-label floating>Firstname</ion-label>
-          <ion-input formControlName="firstname" type="text" [class.invalid]="!slideOneForm.controls.firstname.valid && (submitAttempt)"></ion-input>
-          <ion-input formControlName="id" type="text" [hidden]="true"></ion-input>
-        </ion-item> 
-
-      <ion-item class="errors" *ngIf="!slideOneForm.controls.firstname.valid  && (submitAttempt)">
-          <p>Please enter a valid firstname.</p>
-      </ion-item>
-
-      <ion-item>
-          <ion-label floating>Lastname</ion-label>
-          <ion-input formControlName="lastname" type="text" [class.invalid]="!slideOneForm.controls.lastname.valid && (submitAttempt)"></ion-input>
-      </ion-item>
-
-      <ion-item class="errors" *ngIf="!slideOneForm.controls.lastname.valid  && (submitAttempt)">
-          <p>Please enter a valid lastname.</p>
-      </ion-item>
-
-      <ion-item>
-          <ion-label floating>Mobile Number</ion-label>
-          <ion-input formControlName="mobile" type="text" [class.invalid]="!slideOneForm.controls.mobile.valid && (submitAttempt)"></ion-input>
-      </ion-item>
-
-      <ion-item class="errors" *ngIf="!slideOneForm.controls.mobile.valid  && (submitAttempt)">
-          <p>Please enter a valid mobile number.</p>
-      </ion-item>
-
-      <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)" [readonly]="true"></ion-input>
-      </ion-item>
-
-      <ion-item class="errors" *ngIf="!slideOneForm.controls.email.valid  && (submitAttempt)">
-          <p>Please enter a valid mail.</p>
-      </ion-item>
-
-      <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input formControlName="password" type="text" [class.invalid]="!slideOneForm.controls.password.valid && (submitAttempt)"></ion-input>
-      </ion-item>
-
-      <ion-item class="errors" *ngIf="!slideOneForm.controls.password.valid  && (submitAttempt)">
-          <p>Please enter a valid password.</p>
-      </ion-item>
-    </form> -->
-  </ion-list>
-  <button ion-button color="primary" (click)="navigateToHome()">CANCEL</button>
-  <button ion-button color="primary" (click)="onProfileUpdate()">UPDATE</button>
+<ion-content class="address_page">
+  <section class="sub-page">
+    <div class="address-header" *ngIf="userAddressList.length==0">You have no saved addresses. Please add one.</div>
+    <div class="address-header" *ngIf="userAddressList.length>0">CHOOSE FROM SAVED ADDRESSES</div>
+    <div class="address">
+      <ul>
+        <li class="" *ngFor="let address of userAddressList; let i=index">
+          <div class="address-data" [ngClass]="(i==activeAddress)?'active':''" (click)="setActiveAddress(i,address)">
+            <ion-icon class="delete-icon" name="ios-trash-outline"></ion-icon>
+            <ion-icon class="edit-icon" name="md-create"></ion-icon>
+            <div class="user_data">
+                <ion-icon class="home-icon"  name="ios-home-outline"></ion-icon>
+                <strong class="text-overflow">
+                  <span>{{address.firstName}}&nbsp;{{address.lastName}}</span>
+                </strong>
+                <p>
+                  <span class="">{{address.address}},</span> 
+                  <span class="">{{address.city}},</span>
+                  <span class="">{{address.state}},{{address.country}},{{address.pincode}}</span>
+                </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="add-new">
+        <a href="javascript:void(0);" (click)="addNewAddress()">+ Add new address</a>
+      </div>
+      <button ion-button block *ngIf="userAddressList.length>0" (click)="setDeliveryAddress()">DELIVER TO THIS ADDRESS</button>
+    </div>
+  </section>
 </ion-content>
