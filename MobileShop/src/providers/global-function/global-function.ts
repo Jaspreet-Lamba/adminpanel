@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscriber } from 'rxjs/Subscriber';
 import { Subscribable, Observable } from 'rxjs/Observable';
 
@@ -16,9 +17,28 @@ export class GlobalFunctionProvider {
   public isUserloggedIn: boolean = false;
   public userName: string;
   public userDetails;
+  public deliveryAddress;
   public cartCount = 0;
-  constructor(public zone: NgZone) {
+  public cartDiscount = 0;
+  public cartTotal = 0;
+
+  public slideOneForm : FormGroup;
+
+  constructor(public zone: NgZone, private formBuilder : FormBuilder) {
     this.clearCartCount();
+    this.slideOneForm = formBuilder.group({
+        id: [''],
+        userId: [''],
+        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        email: ['', Validators.compose([Validators.maxLength(60), Validators.pattern('[a-zA-Z0-9@.]*'), Validators.required])],
+        mobile: ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
+        address: ['', Validators.compose([Validators.required])],
+        city: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        state: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        country: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        pincode: ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])]
+    });
   }
 
   checkUserName(): Observable <any> {
@@ -61,10 +81,45 @@ export class GlobalFunctionProvider {
 
   clearCartCount() {
     this.cartCount = 0;
+    this.cartDiscount = 0;
     localStorage.setItem('cartDetails',null);
   }
 
-  setCartCount(count) {
-    this.cartCount += count;
+  setCartCount(count,action) {
+    if(action == 'delete')
+      this.cartCount -= count;
+    else
+      this.cartCount += count;
   }
+
+  getCartTotal() {
+    return this.cartTotal;
+  }
+
+  setCartTotal(total) {
+    this.cartTotal = total;
+  }
+
+  getCartDiscount() {
+    return this.cartDiscount;
+  }
+
+  setCartDiscount(discount) {
+    this.cartDiscount = discount;
+  }
+
+  getOrderTotal() {
+    return this.cartTotal;
+  }
+
+  setDeliveryAddress(dAddress) {
+    this.deliveryAddress = dAddress;
+    if(this.deliveryAddress != null && this.deliveryAddress != '') {
+      this.slideOneForm.setValue({id: '0' , userId: this.deliveryAddress.userId, firstName: this.deliveryAddress.firstName, lastName: this.deliveryAddress.lastName, email: this.deliveryAddress.email, mobile: this.deliveryAddress.mobile, address: this.deliveryAddress.address, city: this.deliveryAddress.city, state: this.deliveryAddress.state, country: this.deliveryAddress.country, pincode: this.deliveryAddress.pincode});  
+    }
+  }
+
+  //getDeliverForm() {
+  //  return this.slideOneForm;
+  //}
 }

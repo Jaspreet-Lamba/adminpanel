@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <div class="cartEmpty" *ngIf="cartEmpty">Sorry! You have no products in your cart.</div>
   <ion-list>
     <ion-item *ngFor="let product of cartDetails;">
       <ion-thumbnail item-start>
@@ -18,15 +19,37 @@
         <p>{{product.productQuantity}}</p>
       </div>
       <div class="product_action">
-        <ion-icon class="delete-icon" name="ios-trash-outline"></ion-icon>
+        <ion-icon class="delete-icon" (click)="deleteProduct(product)" name="ios-trash-outline"></ion-icon>
         <p class="product-price">&#8377;{{product.productPrice}}</p>
       </div>
     </ion-item>
   </ion-list>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!cartEmpty">
   <ion-toolbar>
-    <ion-title>Footer</ion-title>
+    <div class="relative_display">
+      <div class="cart_sub_total inline_display">Cart Total</div>
+      <div class="cart_sub_total_price inline_display"><sup>&#8377;</sup>{{globalFunction.getCartTotal()}}</div>
+    </div>
+    <div class="relative_display">
+      <div class="cart_sub_total inline_display">GST</div>
+      <div class="cart_sub_total_price inline_display"><sup>&#8377;</sup>0</div>
+    </div>
+    <div class="relative_display">
+      <div class="cart_sub_total inline_display">My Wallet</div>
+      <div class="cart_sub_total_price inline_display"><sup>&#8377;</sup>0</div>
+    </div>
+
+    <div class="relative_display">
+      <div class="cart_sub_total inline_display">Discount <p class="discount_msg">(would be added in your wallet)</p></div>
+      <div class="cart_sub_total_price inline_display"><sup>&#8377;</sup>{{globalFunction.getCartDiscount()}}</div>
+    </div>
+    <div class="relative_display order_total">
+      <div class="cart_sub_total inline_display">Order Total</div>
+      <div class="cart_sub_total_price inline_display"><sup>&#8377;</sup>{{globalFunction.getOrderTotal()}}</div>
+    </div>
+    <button ion-button (click)="goToHome()">HOME</button>
+    <button ion-button (click)="checkout()">CHECKOUT</button>
   </ion-toolbar>
 </ion-footer>

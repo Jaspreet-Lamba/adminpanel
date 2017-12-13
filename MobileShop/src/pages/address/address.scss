@@ -17,7 +17,7 @@ page-address {
 			    list-style: none;
 			    padding: 0px;
 
-			    .address-data:last-child div {
+			    .address-data .user_data:last-child div {
     				border: 0px;
 			    }
 
@@ -35,6 +35,11 @@ page-address {
 						&.delete-icon{
 						    right: 35px;
 						    top: 0px;
+						    float: right;
+						}
+
+						&.home-icon{
+						    width: 10%;
 						}
 					}
 
@@ -44,6 +49,8 @@ page-address {
 
     					.delete-icon {
     						color: #c51230;
+    						pointer-events: none;
+    						opacity: 0.3;
     					}
 
     					.edit-icon {
@@ -58,6 +65,7 @@ page-address {
 					.user_data {
 					    border-bottom: 1px dotted;
 					    margin-bottom: 15px;
+					    padding-right: 60px;
 
 					    .icon {
 						    position: absolute;

@@ -5,6 +5,26 @@
 </ion-header>
 
 <ion-content class="home_page">
+  <div class="cart" *ngIf="cartItem.show==true">
+    <div (click)="checkout()">
+        <span class="cart-total-item">{{globalFunction.getCartCount()}}</span>
+        <ion-icon class="cart-icon" name="md-cart"></ion-icon>
+    </div>
+
+    <div class="cart-item-detail kfc-transition">
+        <div class="clearfix cart-product">
+            <strong class="item-name">{{cartItem.productName}} Added</strong>
+            <span class="item-price">
+                <sup>&#8377;<small class="webRupee"></small></sup>
+                {{cartItem.productPrice}}
+            </span>
+        </div>
+        <div class="btn-group">
+            <button class="btn" (click)="backtoHome()">Back to menu</button>
+            <button class="btn active-btn" (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+  </div>
   <div class="products_section">
     <div class="products">
       <div class="product_details">
@@ -33,9 +53,10 @@
               <ion-col class="col2">{{productDetails.product_price}}</ion-col>
             </ion-row>
           </ion-grid>
-          <button ion-button class="add_to_cart" [ngClass]="(productDetails.available=='false')?'disable':''">{{productDetails.available=='false'?'Out of Stock':'Add to Cart'}}</button>
+          <button ion-button class="add_to_cart" (click)="addToCart(productDetails)" [ngClass]="(productDetails.available=='false')?'disable':''">{{productDetails.available=='false'?'Out of Stock':'Add to Cart'}}</button>
         </div>
       </div>
     </div>
   </div>
+  <div class="overlay" *ngIf="cartItem.show==true"></div>
 </ion-content>

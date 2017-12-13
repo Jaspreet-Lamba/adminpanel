@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { AddressPage } from '../pages/address/address';
 import { CartPage } from '../pages/cart/cart';
+import { PaymentPage } from '../pages/payment/payment';
 import { Observable } from 'rxjs/Observable';
 import { GlobalFunctionProvider } from '../providers/global-function/global-function';
 import 'rxjs/add/observable/of';

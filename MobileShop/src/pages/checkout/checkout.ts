@@ -4,18 +4,22 @@ import { RestfullProvider } from '../../providers/restfull/restfull';
 import { Http } from '@angular/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { CartPage } from '../cart/cart';
 import { AddressPage } from '../address/address';
+import { PaymentPage } from '../payment/payment';
 import { GlobalFunctionProvider } from '../../providers/global-function/global-function';
 
 @Component({
-  selector: 'page-addaddress',
-  templateUrl: 'addaddress.html'
+  selector: 'page-checkout',
+  templateUrl: 'checkout.html'
 })
 
 
-export class AddAddressPage {
+export class CheckoutPage {
   submitAttempt: boolean;
   slideOneForm : FormGroup;
+  deliveryAddress;
+  userAddresses;
   
   constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, 
     private alertCtrl: AlertController, private formBuilder : FormBuilder, public globalFunction: GlobalFunctionProvider, public toastCtrl: ToastController) {
@@ -32,64 +36,33 @@ export class AddAddressPage {
         country: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         pincode: ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])]
     });
-    this.slideOneForm.setValue({id: '0' , userId: '1', firstName: 'taran', lastName: 'lamba', email: 'test@gmail.com', mobile: '1231231230', address: 'taran', city: 'taran', state: 'taran', country: 'taran', pincode: '1231231230'});
+    //this.deliveryAddress = JSON.parse(localStorage.getItem('deliveryAddress'));
+    this.deliveryAddress = this.globalFunction.deliveryAddress;
+    if(this.deliveryAddress != null && this.deliveryAddress != '') {
+      this.slideOneForm.setValue({id: '0' , userId: this.deliveryAddress.userId, firstName: this.deliveryAddress.firstName, lastName: this.deliveryAddress.lastName, email: this.deliveryAddress.email, mobile: this.deliveryAddress.mobile, address: this.deliveryAddress.address, city: this.deliveryAddress.city, state: this.deliveryAddress.state, country: this.deliveryAddress.country, pincode: this.deliveryAddress.pincode});  
+    }
+
+    
   }
 
   
-  onAddAddress(){
+  onCheckout(){
     this.submitAttempt = true;
     if(this.slideOneForm.valid){
       console.log(this.slideOneForm.value);
-      let loader = this.loadingCtrl.create({
-        content: "Please wait..."
-      });  
-      loader.present();
-      this.rest.addAddress(this.slideOneForm.value).subscribe(
-        res=>{
-          this.onAddressUpdateSuccess(res);
-          loader.dismiss();
-        },err=>{
-          this.onAddressUpdateError(err);
-          loader.dismiss();
-        }
-      );
+      localStorage.setItem('checkoutDetails',JSON.stringify(this.slideOneForm.value));
+      this.navCtrl.push(PaymentPage);
     }
   }
 
-  onAddressUpdateSuccess(res){
-    //console.log(res);
-    if(res.success == "false") {
-      let toast = this.toastCtrl.create({
-        message: res.message,
-        duration: 3000
-      });
-      toast.present();
-    }else {
-      var dummy = [], duplicate = {};
-      //var data = JSON.parse(localStorage.getItem('userAddresses'));
-      var data = this.globalFunction.getUserAddresses();
-      data.forEach(function(address){
-        //console.log(address);
-        dummy.push(address);
-      });
-      dummy.push(res.data);
-      duplicate = dummy;
-      this.globalFunction.setUserAddresses(duplicate);
-      //localStorage.setItem('userAddresses',JSON.stringify(duplicate));
-      this.navCtrl.setRoot(AddressPage);
-    }
-  }
-  
-  onAddressUpdateError(res){
-    let toast = this.toastCtrl.create({
-      message: res.message,
-      duration: 3000
+  goToAddress() {
+    this.navCtrl.push(AddressPage, {
+      actionButton: true,
     });
-    toast.present();
+    //this.navCtrl.push(AddressPage);
   }
 
   onCancel() {
     this.navCtrl.pop();
-    //this.navCtrl.setRoot(AddressPage);
   }
 }

@@ -8,11 +8,15 @@
 <ion-content class="home_page">
   <ion-list>
     <form [formGroup]="slideOneForm">
+      <ion-item class="disable_this">
+          <ion-label floating>User Id</ion-label>
+          <ion-input formControlName="id" type="text"></ion-input>
+      </ion-item>
+
       <ion-item>
           <ion-label floating>Firstname</ion-label>
           <ion-input formControlName="firstname" type="text" [class.invalid]="!slideOneForm.controls.firstname.valid && (submitAttempt)"></ion-input>
-          <ion-input formControlName="id" type="text" [hidden]="true"></ion-input>
-        </ion-item>
+      </ion-item>
 
       <ion-item class="errors" *ngIf="!slideOneForm.controls.firstname.valid  && (submitAttempt)">
           <p>Please enter a valid firstname.</p>
@@ -36,9 +40,9 @@
           <p>Please enter a valid mobile number.</p>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="disable_this">
           <ion-label floating>Email</ion-label>
-          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)" [readonly]="true"></ion-input>
+          <ion-input formControlName="email" type="text" [class.invalid]="!slideOneForm.controls.email.valid && (submitAttempt)"></ion-input>
       </ion-item>
 
       <ion-item class="errors" *ngIf="!slideOneForm.controls.email.valid  && (submitAttempt)">

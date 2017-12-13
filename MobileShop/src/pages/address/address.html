@@ -12,10 +12,10 @@
     <div class="address">
       <ul>
         <li class="" *ngFor="let address of userAddressList; let i=index">
-          <div class="address-data" [ngClass]="(i==activeAddress)?'active':''" (click)="setActiveAddress(i,address)">
-            <ion-icon class="delete-icon" name="ios-trash-outline"></ion-icon>
-            <ion-icon class="edit-icon" name="md-create"></ion-icon>
-            <div class="user_data">
+          <div class="address-data" [ngClass]="(i==activeAddress)?'active':''">
+            <ion-icon (click)="deleteAddress(address.id)" class="delete-icon" name="ios-trash-outline"></ion-icon>
+            <!-- <ion-icon class="edit-icon" name="md-create"></ion-icon> -->
+            <div class="user_data" (click)="setActiveAddress(i,address)">
                 <ion-icon class="home-icon"  name="ios-home-outline"></ion-icon>
                 <strong class="text-overflow">
                   <span>{{address.firstName}}&nbsp;{{address.lastName}}</span>
@@ -33,6 +33,7 @@
         <a href="javascript:void(0);" (click)="addNewAddress()">+ Add new address</a>
       </div>
       <button ion-button block *ngIf="userAddressList.length>0" (click)="setDeliveryAddress()">DELIVER TO THIS ADDRESS</button>
+      <!-- <button ion-button block *ngIf="userAddressList.length>0 && actionButton==true" (click)="setCheckoutAddress()">DELIVER TO THIS ADDRESS</button> -->
     </div>
   </section>
 </ion-content>

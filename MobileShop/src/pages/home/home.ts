@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
   activeCategoryId = 0;
   categoryArray = [];
   productArray = {};
-  cartCount;
+  //cartCount;
   cartItem: Object = {};
 
   constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public globalFunction: GlobalFunctionProvider, public toastCtrl: ToastController) {
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     // this.loader.present();
     //this.activeCategoryId = 0;
-    this.cartCount = this.globalFunction.cartCount;
+    //this.cartCount = this.globalFunction.cartCount;
     var categData = JSON.parse(localStorage.getItem('categoryData'));
     if(categData) {
       this.setAllCategories(categData);  
@@ -156,7 +156,7 @@ export class HomePage implements OnInit {
   }
 
   addToCart(product) {
-    var cartObj = {}, dummy = [], duplicate = {}, localCart;
+    var cartObj = {}, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
     cartObj.productId = product.product_id;
     cartObj.productName = product.product_name;
     cartObj.productPrice = product.product_price;
@@ -169,14 +169,20 @@ export class HomePage implements OnInit {
     this.cartItem.show = true;
 
     localCart = JSON.parse(localStorage.getItem('cartDetails'));
-    this.globalFunction.setCartCount(1);
-    this.cartCount = this.globalFunction.cartCount;
+    this.globalFunction.setCartCount(1,'add');
     if(localCart != null && localCart != '') {
       localCart.forEach(function(cart) {
+        console.log(cart.productQuantity);
+        if(cart.productId == product.product_id) {
+          cart.productQuantity += 1;
+          isSameProductAdded = true;
+        }
         dummy.push(cart);
       });
     } 
-    dummy.push(cartObj);
+    if(!isSameProductAdded)
+      dummy.push(cartObj);
+    
     duplicate = dummy;
     localStorage.setItem('cartDetails',JSON.stringify(duplicate));
   }
