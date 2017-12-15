@@ -15,5 +15,12 @@ export class PaymentPage {
   constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public globalFunction: GlobalFunctionProvider, public toastCtrl: ToastController){
   }
 
+  onCancel() {
+    this.navCtrl.pop();
+  }
+
+  onPayment() {
+    alert('make payment');
+  }
   
 }

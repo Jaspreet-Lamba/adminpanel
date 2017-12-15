@@ -18,7 +18,7 @@ export class AddressPage {
   activeAddress = 0;
   actionButton: Boolean = false;
   //activeAddressData: Object
-  activeAddressData: Object = {
+  activeAddressData = {
     'address' : '',
   };
   loader = this.loadingCtrl.create({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser'
-import { App, NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
+import { App, NavController, LoadingController, AlertController, NavParams, ToastController } from 'ionic-angular';
 import { RestfullProvider } from '../../providers/restfull/restfull';
 import { Http } from '@angular/http';
 import { CartPage } from '../cart/cart';
@@ -12,16 +12,16 @@ import { GlobalFunctionProvider } from '../../providers/global-function/global-f
 })
 export class ProductPage {
   productDetails;
-  cartItem: Object = {
+  cartItem = {
     'productName' : '',
     'productPrice' : '',
-    'show' : ''
+    'show' : false
   };
 
   loader = this.loadingCtrl.create({
     content: "Fetching product details..."
   });
-  constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public navParams: NavParams, private sanitizer: DomSanitizer, public globalFunction: GlobalFunctionProvider) {
+  constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public toastCtrl: ToastController, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public navParams: NavParams, private sanitizer: DomSanitizer, public globalFunction: GlobalFunctionProvider) {
     // console.log("product page");
     this.productDetails = navParams.get("productDetails");
     // console.log(this.productDetails);
@@ -56,7 +56,11 @@ export class ProductPage {
 
   checkout() {
     if(this.globalFunction.cartCount > 0) {
-      this.cartItem = {};
+      this.cartItem = {
+        'productName' : '',
+        'productPrice' : '',
+        'show' : false
+      };
       this.navCtrl.push(CartPage);
     }
     else {
@@ -69,7 +73,14 @@ export class ProductPage {
   }
 
   addToCart(product) {
-    var cartObj = {}, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
+    var cartObj = {
+      'productId' : '',
+      'productName' : '',
+      'productPrice' : '',
+      'productSplPrice' : '',
+      'productImage' : '',
+      'productQuantity' : 0,
+    }, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
     cartObj.productId = product.product_id;
     cartObj.productName = product.product_name;
     cartObj.productPrice = product.product_price;

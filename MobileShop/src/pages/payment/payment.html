@@ -7,6 +7,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  
+<ion-content class="payment_page">
+  <ion-list radio-group>
+    <div class="payment_text">Please select mode of payment.</div>
+    <ion-item>
+      <ion-icon name="cash" item-start></ion-icon>
+      <ion-label>Cash on Delivery</ion-label>
+      <ion-radio checked="true" value="cod"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="card" item-start></ion-icon>
+      <ion-label>Paypal</ion-label>
+      <ion-radio value="paypal"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="onCancel()">CANCEL</button>
+  <button ion-button (click)="onPayment()">MAKE PAYMENT</button>
 </ion-content>

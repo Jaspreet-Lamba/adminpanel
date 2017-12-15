@@ -1,113 +1,38 @@
 page-payment {
-	.item {
-	    margin: 5px 0px 5px 0px;	
-	}
-	.list > .item-block:first-child {
-	    border-top: 0px solid #c8c7cc;
-	}
-	.list > .item-block:last-child, .list > .item-wrapper:last-child .item-block {
-	    border-bottom: 0px solid #c8c7cc;
-	}
-	.list > .item-block:last-child .item-inner, .list > .item-wrapper:last-child .item-block .item-inner{
-	    border-bottom: 0.55px solid #c8c7cc;
-	    padding: 0px;
-    	margin-right: 8px;
-	}
-	.product_details {
-		display: inline-block;
-		width: 70%;
-		overflow: hidden;
+	.payment_page {
+		background-color: #f5f5f5;
 
-		h2 {
-			margin: 13px 0;
-			white-space: nowrap;
-		    overflow: hidden;
-		    text-overflow: ellipsis;
-		}
-	}
-	.product_action {
-		display: inline-block;
-		width: 30%;
-		overflow: hidden;
-		text-align: right;
-	    right: 8px;
-	    position: relative;
 
-	    .product-price {
-			font-size: 16px;
-		    font-weight: 500;
-		    color: #b5102d;
-		}
-		.delete-icon {
-			font-size: 1.9em;
-			margin: 0px 0px 6px 0px;
-		}
-	}
-	.cartEmpty {
-		font-size: 25px;
-	    padding: 20px;
-	    text-align: center;
-	    top: 100px;
-	    position: relative;
-	}
-	.footer {
-		.toolbar {
-			padding: 15px;
-
-			.relative_display {
-				position: relative;
-				padding: 5px 0px;
-
-				.inline_display {
-					display: inline-block;
-				}
-
-				.cart_sub_total {
-					font-size: 1.5rem;
-					font-weight: normal;
-
-					.discount_msg {
-						margin: 0px;
-					    font-size: 1em;
-					    color: red;
-					    padding: 5px 0px;
-					}
-				}
-
-				.cart_sub_total_price {
-					font-size: 1.7rem;
-					font-weight: normal;
-					position: fixed;
-					right: 15px;
-
-					sup {
-						font-size: 70%;
-						top: -.3em;
-					}
-				}
-
-				&.order_total {
-					border-top : 1px solid #cac0c0;
-					padding: 10px 0px 0px 0px;
-
-					.cart_sub_total, .cart_sub_total_price {
-						font-size: 2.3rem;
-					}
-				}
+		.list {
+			.item {
+				background-color: #f5f5f5;
 			}
 
-			.button {
-				width: calc(50% - 2.6rem);
-				font-size: 1.6rem;
-				margin: 1rem 1.2rem 0rem 1.2rem;
-				font-weight: bold;
-				background-color: #b5102d;
+			.payment_text {
+				margin: 10px;
+			    font-size: 1.5rem;
+			    text-align: left;
+				text-overflow: unset;
+			    white-space: normal;
+			    word-break: break-all;
 			}
-			.button.activated {
-				background-color: #b5102d;
+			.item-radio-checked.item ion-label {
+				color: #c51230;
+			}
+			.radio .radio-checked .radio-inner {
+				border-color: #c51230;
 			}
 		}
 
+		.button {
+			margin: 40px 0px 20px 0px;
+			background-color: #c51230;
+			color: #fff;
+			font-weight: 500;
+			width: calc(50% - 2.6rem);
+			margin: 1.2rem 1.2rem;
+			font-size: 18px;
+			padding: 20px 0px;
+		}
 	}
-	
 }
