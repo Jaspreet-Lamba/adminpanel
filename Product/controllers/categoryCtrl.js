@@ -5,31 +5,38 @@ var Category = require("../models/category");
 var Product = require("../models/product");
 
 exports.addCategory = function(req,res){
-    categoryId = 4;
-    
-    var category = new Category({ 
-	    category_id : categoryId,
-	    category_name : req.body.categoryName,
-	    status : req.body.status
-	});
-    
-    category.save(function (err, response) {
+    Category.find({}, function (err, resp) {
         if(err){
             return res.json({
-                 "error" : err
+                "error" : err
             });
-        }
-        else{
-        	var token = jwt.sign({
-                "status": "true",
-                "category_id": response.category_id,
-            }, auth.secret)
-            res.json({
-                "success": true,
-                "token" : token
+        } else {
+            var category = new Category({ 
+        	    category_id : resp[resp.length-1].category_id + 1,
+        	    category_name : req.body.categoryName,
+        	    status : req.body.status,
+                category_gst : req.body.categoryGst
+        	});
+            
+            category.save(function (err, response) {
+                if(err){
+                    return res.json({
+                         "error" : err
+                    });
+                }
+                else{
+                	var token = jwt.sign({
+                        "status": "true",
+                        "category_id": response.category_id,
+                    }, auth.secret)
+                    res.json({
+                        "success": true,
+                        "token" : token
+                    })
+                }
             })
         }
-    })
+    });
 }
 
 exports.updateCategory = function(req,res){
@@ -43,6 +50,7 @@ exports.updateCategory = function(req,res){
         categoryResp.category_id = req.body.categoryId;
         categoryResp.category_name = req.body.categoryName;
         categoryResp.status = req.body.status;
+        categoryResp.category_gst = req.body.categoryGst;
         
         categoryResp.save(function (err, response) {
             if (err) {
@@ -111,6 +119,7 @@ exports.getAllCategoryWithProducts = function (req, res) {
                     catData.category_id = catResp[j].category_id;
                     catData.category_name = catResp[j].category_name;
                     catData.status = catResp[j].status;
+                    catData.category_gst = catResp[j].category_gst;
                     for(var i=0;i<prodResp.length;i++) {
                         if(catResp[j].category_name == prodResp[i].product_category) {
                             prodData = {};
@@ -125,6 +134,7 @@ exports.getAllCategoryWithProducts = function (req, res) {
                             // prodData.product_shortdesc = prodResp[i].product_shortdesc;
                             // prodData.product_fulldesc = prodResp[i].product_fulldesc;
                             prodData.product_image = prodResp[i].product_image;
+                            prodData.product_gst = catResp[j].category_gst;
                             prod.push(prodData);      
                         }
                     }

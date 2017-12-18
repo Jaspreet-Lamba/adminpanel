@@ -13,6 +13,7 @@ import { AddAddressPage } from '../pages/addaddress/addaddress';
 import { CartPage } from '../pages/cart/cart';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { PaymentPage } from '../pages/payment/payment';
+import { OrdersPage } from '../pages/orders/orders';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,8 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     AddAddressPage,
     CartPage,
     CheckoutPage,
-    PaymentPage
+    PaymentPage,
+    OrdersPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { GlobalFunctionProvider } from '../providers/global-function/global-func
     AddAddressPage,
     CartPage,
     CheckoutPage,
-    PaymentPage
+    PaymentPage,
+    OrdersPage
   ],
   providers: [
     StatusBar,

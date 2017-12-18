@@ -48,6 +48,10 @@ export class ViewCategoryComponent {
         title: 'Status',
         type: 'string',
       },
+      category_gst: {
+        title: 'GST',
+        type: 'string',
+      },
     },
   };
 
@@ -62,6 +66,7 @@ export class ViewCategoryComponent {
       categoryId : [''],
       categoryName : ['', Validators.required],
 			status : ['', Validators.required],
+      categoryGst : ['', Validators.required],
     })
     this.getCategory();
     
@@ -123,6 +128,7 @@ export class ViewCategoryComponent {
       'categoryId':event.data.category_id,
       'categoryName':event.data.category_name,
       'status':event.data.status,
+      'categoryGst':event.data.category_gst,
     });
   }
 
@@ -139,6 +145,7 @@ export class ViewCategoryComponent {
 			'categoryId':'',
 			'categoryName':'',
 			'status':'',
+      'categoryGst':'',
 		});
 		this.buttontext = "Add Category";
 	}

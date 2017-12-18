@@ -3,6 +3,7 @@ var router = express.Router(); // Using Routing Function of Express
 var productController = require('../controllers/productCtrl');
 var categoryController = require('../controllers/categoryCtrl');
 var userController = require('../controllers/userCtrl');
+var orderController = require('../controllers/orderCtrl');
 
 //user apis
 router.route('/v1/login')
@@ -20,6 +21,13 @@ router.route('/v1/addAddress')
 router.route('/v1/getAddresses')
 .post(userController.getAddresses)
 
+
+//order apis
+router.route('/v1/placeOrder')
+.post(orderController.placeOrder)
+
+
+
 //product apis
 router.route('/v1/addProduct')
 .post(productController.addProduct)
@@ -35,6 +43,7 @@ router.route('/v1/getAllProducts')
 
 router.route('/v1/getProduct')
 .post(productController.getProduct)
+
 
 
 //category apis

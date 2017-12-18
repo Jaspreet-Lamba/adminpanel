@@ -20,7 +20,11 @@ export class HomePage implements OnInit {
   categoryArray = [];
   productArray = {};
   //cartCount;
-  cartItem: Object = {};
+  cartItem = {
+    'productName' : '',
+    'productPrice' : '',
+    'show' : false,
+  };
 
   constructor(public app: App, public navCtrl: NavController, private http: Http, public rest  : RestfullProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public globalFunction: GlobalFunctionProvider, public toastCtrl: ToastController) {
   	//console.log("home page");
@@ -138,7 +142,11 @@ export class HomePage implements OnInit {
   }
 
   backtoHome() {
-    this.cartItem = {};
+    this.cartItem = {
+      'productName' : '',
+      'productPrice' : '',
+      'show' : false,
+    };
   }
 
   checkout() {
@@ -156,13 +164,22 @@ export class HomePage implements OnInit {
   }
 
   addToCart(product) {
-    var cartObj = {}, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
+    var cartObj = {
+      'productId' : '',
+      'productName' : '',
+      'productPrice' : '',
+      'productSplPrice' : '',
+      'productImage' : '',
+      'productQuantity' : 0,
+      'productGst' : ''
+    }, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
     cartObj.productId = product.product_id;
     cartObj.productName = product.product_name;
     cartObj.productPrice = product.product_price;
     cartObj.productSplPrice = product.product_splprice;
     cartObj.productImage = product.product_image;
     cartObj.productQuantity = 1;
+    cartObj.productGst = product.product_gst;
     
     this.cartItem.productName = product.product_name;
     this.cartItem.productPrice = product.product_price;

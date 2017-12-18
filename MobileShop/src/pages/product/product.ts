@@ -80,6 +80,7 @@ export class ProductPage {
       'productSplPrice' : '',
       'productImage' : '',
       'productQuantity' : 0,
+      'productGst' : ''
     }, dummy = [], duplicate = {}, localCart, isSameProductAdded = false;
     cartObj.productId = product.product_id;
     cartObj.productName = product.product_name;
@@ -87,6 +88,7 @@ export class ProductPage {
     cartObj.productSplPrice = product.product_splprice;
     cartObj.productImage = product.product_image;
     cartObj.productQuantity = 1;
+    cartObj.productGst = product.product_gst;
     
     this.cartItem.productName = product.product_name;
     this.cartItem.productPrice = product.product_price;

@@ -1,0 +1,14 @@
+EXTRA WORK DONE : 
+1. Added GST for Category in Admin Panel
+2. Calculation of GST in Mobile App based on Category GST.
+3. Order - Processing and Delivery button option in Admin Panel and Mobile App
+
+
+
+gst in category section
+contact us
+terms n conditions
+
+
+
+

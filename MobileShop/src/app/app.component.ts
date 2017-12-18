@@ -8,7 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { AddressPage } from '../pages/address/address';
 import { CartPage } from '../pages/cart/cart';
-import { PaymentPage } from '../pages/payment/payment';
+import { OrdersPage } from '../pages/orders/orders';
 import { Observable } from 'rxjs/Observable';
 import { GlobalFunctionProvider } from '../providers/global-function/global-function';
 import 'rxjs/add/observable/of';
@@ -40,7 +40,9 @@ export class MyApp {
     if(name == "profile")
       this.nav.setRoot(ProfilePage);
     else if(name == "address")
-    this.nav.setRoot(AddressPage);
+      this.nav.setRoot(AddressPage);
+    else if(name == "orders")
+      this.nav.setRoot(OrdersPage);
   }
 
   logoutUser() {

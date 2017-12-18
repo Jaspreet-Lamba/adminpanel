@@ -22,6 +22,7 @@ export class RestfullProvider {
       getAllCategory : this.BaseUrl + "getAllCategory",
       getAllCategoryWithProducts : this.BaseUrl + "getAllCategoryWithProducts",
       getProduct : this.BaseUrl + "getProduct",
+      placeOrder : this.BaseUrl + "placeOrder",
   }
 
   public appName = "Mobile Shop";
@@ -42,6 +43,10 @@ export class RestfullProvider {
   options = new RequestOptions({
     headers: this.headers
   });
+
+  placeOrder(orderData): Observable < any > {
+    return this.http.post(this.dataApiUrl.placeOrder, orderData, this.options).map((res: Response) => res.json());
+  }
 
   getAllCategoryWithProducts() :Observable<any>{
     return this.http.get(this.dataApiUrl.getAllCategoryWithProducts).map(data=>data = data.json());
@@ -96,6 +101,8 @@ export class RestfullProvider {
   getAddresses(addressData): Observable < any > {
     return this.http.post(this.userApiUrl.getAddresses, addressData, this.options).map((res: Response) => res.json());
   }
+
+
 
 
   // addUser(userObj): Observable < any > {

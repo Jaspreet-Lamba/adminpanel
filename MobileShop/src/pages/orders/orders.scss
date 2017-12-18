@@ -1,5 +1,5 @@
-page-payment {
-	.payment_page {
+page-orders {
+	.orders_page {
 		background-color: #f5f5f5;
 
 
@@ -21,13 +21,6 @@ page-payment {
 			}
 			.radio .radio-checked .radio-inner {
 				border-color: #c51230;
-			}
-			p {
-				font-size: 0.8em;
-				color: #ff0000 !important;
-			}
-			.errors .item-inner {
-				border-bottom: 0px !important;
 			}
 		}
 

@@ -19,15 +19,20 @@ export class CartPage {
   }
 
   calculateCartTotal() {
-  	var discount = 0, cartTotal = 0;
+  	var discount = 0, cartTotal = 0, gst = 0;
   	this.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
   	this.cartDetails.forEach(function(cartDetails) {
   		discount += (cartDetails.productSplPrice * cartDetails.productQuantity);
   		cartTotal += (cartDetails.productPrice * cartDetails.productQuantity);
+      gst += (cartDetails.productPrice * cartDetails.productGst / 100) * cartDetails.productQuantity;
   	});
   	this.globalFunction.setCartDiscount(discount);
-  	this.globalFunction.setCartTotal(cartTotal);
-  	console.log(this.cartDetails);
+    this.globalFunction.setCartShipping(0);
+  	this.globalFunction.setCartGst(gst);
+    this.globalFunction.setCartTotal(cartTotal);
+    this.globalFunction.setCartWallet(0);
+    this.globalFunction.setOrderTotal(cartTotal);
+    console.log(this.cartDetails);
   }
 
   deleteProduct(product) {

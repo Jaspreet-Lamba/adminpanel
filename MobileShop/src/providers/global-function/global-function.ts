@@ -19,8 +19,13 @@ export class GlobalFunctionProvider {
   public userDetails;
   public deliveryAddress;
   public cartCount = 0;
+
   public cartDiscount = 0;
+  public cartShipping = 0;
   public cartTotal = 0;
+  public cartGst = 0;
+  public cartWallet = 0;
+  public orderTotal = 0;
 
   public slideOneForm : FormGroup;
 
@@ -82,6 +87,11 @@ export class GlobalFunctionProvider {
   clearCartCount() {
     this.cartCount = 0;
     this.cartDiscount = 0;
+    this.cartShipping = 0;
+    this.cartTotal = 0;
+    this.cartGst = 0;
+    this.cartWallet = 0;
+    this.orderTotal = 0;
     localStorage.setItem('cartDetails',null);
   }
 
@@ -108,8 +118,36 @@ export class GlobalFunctionProvider {
     this.cartDiscount = discount;
   }
 
+  getCartShipping() {
+    return this.cartShipping;
+  }
+
+  setCartShipping(shipping) {
+    this.cartShipping = shipping;
+  }
+
+  getCartWallet() {
+    return this.cartWallet;
+  }
+
+  setCartWallet(wallet) {
+    this.cartWallet = wallet;
+  }
+
+  getCartGst() {
+    return this.cartGst;
+  }
+
+  setCartGst(gst) {
+    this.cartGst = gst;
+  }
+
   getOrderTotal() {
     return this.cartTotal;
+  }
+
+  setOrderTotal(total) {
+    this.orderTotal = total;
   }
 
   setDeliveryAddress(dAddress) {

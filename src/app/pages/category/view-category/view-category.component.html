@@ -20,7 +20,18 @@
                     <option value="Disable">Disable</option>
                   </select>
                 </div>
-              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputCategoryStatus">GST %</label>
+                  <select formControlName="categoryGst" class="form-control" id="inputCategoryGst">
+                    <option selected value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18">18%</option>
+                    <option value="28">28%</option>
+                  </select>
+                </div>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">{{buttontext}}</button>
         </form>

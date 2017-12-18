@@ -20,6 +20,17 @@ export class AddressPage {
   //activeAddressData: Object
   activeAddressData = {
     'address' : '',
+    'city' : '',
+    'country' : '',
+    'email' : '',
+    'firstName' : '',
+    'id' : 0,
+    'lastName' : '',
+    'mobile' : '',
+    'pincode' : '',
+    'state' : '',
+    'userId' : 0,
+    'addIndex' : 0,
   };
   loader = this.loadingCtrl.create({
 	  content: "Fetching your addresses..."

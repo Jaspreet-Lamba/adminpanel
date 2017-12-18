@@ -13,6 +13,9 @@ var CategorySchema = new Schema({
     },
     status: {
         type: String
+    },
+    category_gst: {
+        type: String
     }
 });
 
